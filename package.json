@@ -1,0 +1,18 @@
+{
+  "name": "frontend-dsa3101-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Xue Beichen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0",
+    "puppeteer": "^22.5.0"
+  }
+}
