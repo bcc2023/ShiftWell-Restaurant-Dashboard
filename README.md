@@ -11,14 +11,16 @@
     Note: There is no need to create an environment for this, as npm installs packages to the directory itself.
 
 1. to install packages needed in package.json 
-
+    ```
     npm i
+    ```
 
 2. to run Frontend code and start api
-
+    ```
     cd Frontend
 
     npm start
+    ```
 
 3. to test Frontend alone, in your browser, enter http://localhost:8000/weather to get real-time weather-by-hour at sentosa, you can install a json viewer for better readability.
 
