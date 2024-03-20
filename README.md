@@ -8,7 +8,8 @@
 
 **Instructions to run code**
 
-    Note: There is no need to create an environment for this, as npm installs packages to the directory itself.)
+    Note: There is no need to create an environment for this, as npm installs packages to the directory itself.
+    
 1. use "npm i" to install packages needed in package.json 
 2. use "npm start" to run code and start api
 3. to test Frontend alone, in your browser, enter http://localhost:8000/weather to get real-time weather-by-hour at sentosa, you can install a json viewer for better readability.
