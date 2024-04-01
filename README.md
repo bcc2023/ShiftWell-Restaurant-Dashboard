@@ -1,4 +1,4 @@
-Latest
+**Latest**
 
 *18 Mar*
 - implemented a real-time weather-by-hour scraper in javascript
@@ -7,7 +7,12 @@ Latest
 - building connection between backend and frontend, in progress
 
 *1 Apr*
-- implemented backendDataFetcher
+- implemented backendDataFetcher 
+  ```
+  npm start on both backend and frontend, 
+  http://localhost:4000/getData for Backend, http://localhost:8000/backendData for frontend. 
+  However, currently the frontend is showing 'TypeError: fetchDataFromBackend is not a function'. This could be because extra requirement is needed to connect back and front, still investigating.
+  ```
 - implemented CSS and html
 
 
