@@ -22,6 +22,8 @@ app.get('/weather', async (req, res) => {
     }
 });
 
+app.get()
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
