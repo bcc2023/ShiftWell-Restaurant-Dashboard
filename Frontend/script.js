@@ -1,5 +1,5 @@
 //a server file to test out and view the webpage 
-//start server from console with command node server.js and webpage will be available on http://localhost:8080
+//start server from console with command node script.js and webpage will be available on http://localhost:8080
 
 const path = require('path');
 const express = require('express')

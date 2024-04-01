@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon Frontend/index.js"
   },
   "author": "Xue Beichen",
   "license": "ISC",
@@ -17,3 +17,4 @@
     "puppeteer": "^22.5.0"
   }
 }
+

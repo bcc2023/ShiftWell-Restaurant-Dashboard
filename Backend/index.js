@@ -9,4 +9,4 @@ app.get("/getData",(req,res)=>{
     res.send("this is some data from backend");}
 );
 
-app.listen(4000, () => console.log(`backend app is running`));
+app.listen(4000, () => console.log(`backend app is running and sending stuff`));
