@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
     res.json('Welcome to my first scraping');
 });
 
+
 app.get('/weather', async (req, res) => {
     try {
         const weatherDetails = await scrapeWeatherData();
