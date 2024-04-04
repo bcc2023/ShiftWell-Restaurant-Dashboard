@@ -120,6 +120,10 @@ body {
     font-size: 20px;
 }
 
+.user-profile span{
+    text-align: ;
+}
+
 
 .card-container {
     display: flex;
@@ -139,6 +143,15 @@ body {
     line-height: 1.5;
     margin: 8px;
 }
+
+#full-time-input{
+    padding-left: 10px;
+}
+
+#part-time-input{
+    padding-left: 10px;
+}
+
 
 
 

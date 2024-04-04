@@ -14,70 +14,58 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="logo">
-                <img src="/images/logo.png" alt="GoodOldDays Logo">
-            </div>
-            <ul class="menu">
-                <li class="active">
-                    <a href="#">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li id="employees">
-                    <a href="#">
-                        <i class="fas fa-user"></i>
-                        <span>Employees</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Schedule</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Demand Forecast</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-users-cog"></i>
-                        <span>Employee Management</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Reports &amp; Analytics</span>
-                    </a>
-                </li>
-                <li class="logout">
-                    <a href="#">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                    </a>
-                </li>
-            </ul>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="/images/logo.png" alt="GoodOldDays Logo">
         </div>
-        <div class="main-content">
-            <div class="header-wrapper">
-                <div class="header-title">
-                    <img src="/images/logo.png" alt="GoodOldDays Logo">
-                    <h2>Employee Chart</h2>
-                </div>
-                <div class="user-profile">
-                    <img src="/images/user-profile.jpg" alt="User Profile">
-                    <span>John Doe</span>
-                </div>
-            </div>
-            <div class="chart-container"> <!-- Initially hidden -->
-                <canvas id="employeeChart"></canvas>
-            </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="#">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li id="employees">
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span>Employees</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Demand Forecast</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Employee Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports &amp; Analytics</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="chart-container"> <!-- Initially hidden -->
+            <canvas id="employeeChart"></canvas>
         </div>
     </div>
 
