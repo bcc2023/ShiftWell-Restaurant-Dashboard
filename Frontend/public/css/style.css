@@ -85,6 +85,66 @@ body {
     left: 0;
 }
 
+/* main body section */
+.main-content{
+    position: relative;
+    background: #ebe9e9;
+    width: 100%;
+    padding: 1rem;
+
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+
+.user-profile img {
+    width: 50px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.user-profile {
+    text-align: center;
+}
+
+.header-title {
+    color: #1B4D3E;
+    font-size: 20px;
+}
+
+
+.card-container {
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+.card-wrapper {
+    background-color: #f9f9f9; 
+    padding: 15px 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: calc(50% - 20px); 
+    margin-bottom: 15px; 
+    line-height: 1.5;
+    margin: 8px;
+}
+
+
+
+
+
+
 /* Employee Management Styles */
 .employee-management {
   margin-top: 20px;
