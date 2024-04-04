@@ -6,7 +6,14 @@ const app = express();
 app.use(cors());
 
 app.get("/getData",(req,res)=>{
-    res.send("this is some data from backend");}
-);
+    const employees = ["John", "Jane", "Doe", "Alice", "Bob"]; // Example employee names, replace with actual data from your backend
+    res.json(employees);
+});
+
+app.get("/chart", (req, res) => {
+    // Render the HTML file containing the chart
+    res.sendFile(path.join(__dirname, "public", "employeeChart.html"));
+});
 
 app.listen(4000, () => console.log(`backend app is running and sending stuff`));
+
