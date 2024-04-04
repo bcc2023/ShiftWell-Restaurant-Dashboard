@@ -24,7 +24,6 @@ API issue resolved yay
 
 
 
-
 **Let's aim to build up this project backbone bit by bit**
 
 ## 1. Root Directory
