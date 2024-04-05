@@ -46,6 +46,19 @@ app.get('/backendData', async (req, res) => {
     }
 });
 
+app.get('/backendDataSchedule', async (req, res) => {
+    try {
+        // Fetch backend data from the backend server
+        const backendDataSchedule = await fetchDataFromBackend();
+        
+        // Serve the HTML file containing the chart with the fetched backend data
+        res.sendFile(path.join(__dirname, 'public', 'schedule.html'), { backendDataSchedule });
+    } catch (error) {
+        console.error('Error fetching data from backend:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 
 app.listen(PORT, () => {
