@@ -11,6 +11,7 @@ const app = express();
 // Import component logic
 const scrapeWeatherData = require('./components/scrapeWeatherData');
 const fetchDataFromBackend = require('./components/backendDataFetcher');
+const fetchDataFromBackendSchedule = require('./components/backendDataFetcher');
 
 app.use(cors());
 
@@ -46,7 +47,6 @@ app.get('/backendData', async (req, res) => {
     }
 });
 
-
 app.get('/backendData/employees', async (req, res) => {
     try {
         // Fetch backend data from the backend server
@@ -60,10 +60,10 @@ app.get('/backendData/employees', async (req, res) => {
     }
 });
 
-app.get('/backendDataSchedule', async (req, res) => {
+app.get('/backendData/schedule', async (req, res) => {
     try {
         // Fetch backend data from the backend server
-        const backendDataSchedule = await fetchDataFromBackend();
+        const backendDataSchedule = await fetchDataFromBackendSchedule();
         
         // Serve the HTML file containing the chart with the fetched backend data
         res.sendFile(path.join(__dirname, 'public', 'schedule.html'), { backendDataSchedule });
