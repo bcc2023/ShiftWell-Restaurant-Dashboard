@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/backendData/employees">
     <title>Employee Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+    <!-- <style>
         .chart-container {
             display: none; /* Hide the chart container by default */
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div class="sidebar">
@@ -20,7 +21,7 @@
         </div>
         <ul class="menu">
             <li class="active">
-                <a href="#">
+                <a href="/backendData">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -70,35 +71,33 @@
     </div>
 
     <script>
-        document.getElementById('employees').addEventListener('click', function() {
-            location.href = '/backendData/employees';
-            /* fetch('http://localhost:4000/getData')
-            .then(response => response.json())
-            .then(data => {
-                const ctx = document.getElementById('employeeChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data,
-                        datasets: [{
-                            label: 'Employee Names',
-                            data: Array(data.length).fill(1), // Dummy data, since we're only interested in displaying names
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+            /* location.href = '/employees'; */
+        fetch('http://localhost:4000/getData')
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('employeeChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data,
+                    datasets: [{
+                        label: 'Employee Names',
+                        data: Array(data.length).fill(1), // Dummy data, since we're only interested in displaying names
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
                     }
-                });
-                document.querySelector('.chart-container').style.display = 'block'; // Show the chart container
-            }); */
-        });
+                }
+            });
+        document.querySelector('.chart-container').style.display = 'block'; // Show the chart container
+        }); 
     </script>
 </body>
 </html>

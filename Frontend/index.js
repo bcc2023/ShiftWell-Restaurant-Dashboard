@@ -46,6 +46,16 @@ app.get('/backendData', async (req, res) => {
     }
 });
 
+app.get('/backendData/employees', async (req, res) => {
+    try {
+        // Fetch backend data from the backend server
+        const backendData = await fetchDataFromBackend();
+        res.sendFile(path.join(__dirname, 'public', 'employee.html'), { backendData });
+    } catch (error) {
+        console.error('Error fetching data from backend:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 
 app.listen(PORT, () => {
