@@ -57,26 +57,44 @@
             </li>
         </ul>
     </div>
+
     <div class="main-content">
         <div class="chart-container"> <!-- Initially hidden -->
             <canvas id="employeeChart"></canvas>
         </div>
-        <div class="booking-container">
-            <h2>Booking Information</h2>
-            <form id="bookingForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
-                <label for="people">Number of People:</label>
-                <input type="number" id="people" name="people" required><br><br>
-                <button type="submit">Book Now</button>
-            </form>
-            <div id="currentBooking">
-                <h3>Current Booking</h3>
-                <!-- Display current booking information here -->
-            </div>
+
+        <div id="bookingForm" class="form-container">
+            <h2>New Booking</h2>
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" placeholder="Name"><br><br>
+            <label for="numPeopleInput">Number of People:</label>
+            <input type="number" id="numPeopleInput" placeholder="Number of People"><br><br>
+            <button onclick="submitBooking()">Submit</button>
         </div>
+
+        <div id="currentBookings" class="bookings-container">
+            <h2>Current Bookings</h2>
+            <ul id="bookingList"></ul>
+        </div>
+
     </div>
+
     <script>
+        function submitBooking() {
+            const name = document.getElementById('nameInput').value;
+            const numPeople = document.getElementById('numPeopleInput').value;
+            const booking = { name, numPeople };
+
+            // Add the booking to the list
+            const bookingList = document.getElementById('bookingList');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${name} - ${numPeople} people`;
+            bookingList.appendChild(listItem);
+
+            // Optionally, you can send the booking data to the server using AJAX or fetch
+            // For simplicity, we're not implementing server-side handling here
+        }
+
 
         document.getElementById('schedule').addEventListener('click', function() {
             location.href = '/backendData/schedule';
