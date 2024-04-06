@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule Table</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <base href="/backendData/employees">
+    <title>Employee Information</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <style>
-        .schedule-container {
-            display: none;
-        }
-    </style> -->
 </head>
 <body>
     <div class="sidebar">
@@ -26,25 +21,26 @@
                 </a>
             </li>
             <li id="employees">
-                <a href="/backendData/employees">
+                <a href="#">
                     <i class="fas fa-user"></i>
                     <span>Employees</span>
                 </a>
             </li>
-            <li id="staffSchedule">
-                <a href="#">
+            <!-- Other menu items -->
+            <li id = "schedule">
+                <a href="/backendData/schedule">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
                 </a>
             </li>
-            <li id="demandForecast">
+            <li>
                 <a href="/backendData/demandForecast">
                     <i class="fas fa-chart-line"></i>
                     <span>Demand Forecast</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/backendData/employeeManagement">
                     <i class="fas fa-users-cog"></i>
                     <span>Employee Management</span>
                 </a>
@@ -64,38 +60,31 @@
         </ul>
     </div>
     <div class="main-content">
-        <div class="schedule-container">
-            <canvas id="scheduleTable"></canvas>
+        <div class="employee-info">
+            <h3>Employee Information</h3>
+            <form id="employeeForm">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" readonly>
+                <label for="shiftId">Shift ID:</label>
+                <input type="text" id="shiftId" name="shiftId" readonly>
+            </form>
         </div>
     </div>
+
     <script>
-        fetch('http://localhost:4000/getDataSchedule')
+        fetch('http://localhost:4000/getData')
         .then(response => response.json())
         .then(data => {
-            const ctx = document.getElementById('scheduleTable').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: data,
-                    datasets: [{
-                        label: 'Employee Names',
-                        data: Array(data.length).fill(1), // Dummy data, since we're only interested in displaying names
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-            document.querySelector('.schedule-container').style.display = 'block'; // Show the chart container
+            const employeeIdInput = document.getElementById('employeeId');
+            const shiftIdInput = document.getElementById('shiftId');
+
+            // Assuming 'data' contains employee information
+            const employee = data[0]; // Just selecting the first employee for demonstration
+
+            // Populate employee information form
+            employeeIdInput.value = employee.id;
+            shiftIdInput.value = employee.shiftId;
         });
-        
     </script>
 </body>
 </html>

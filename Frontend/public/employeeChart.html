@@ -31,19 +31,19 @@
                     <span>Employees</span>
                 </a>
             </li>
-            <li>
+            <li id = "schedule">
                 <a href="#">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
                 </a>
             </li>
-            <li>
+            <li id="demandForecast">
                 <a href="#">
                     <i class="fas fa-chart-line"></i>
                     <span>Demand Forecast</span>
                 </a>
             </li>
-            <li>
+            <li id="employeeManagement">
                 <a href="#">
                     <i class="fas fa-users-cog"></i>
                     <span>Employee Management</span>
@@ -71,32 +71,19 @@
 
     <script>
         document.getElementById('employees').addEventListener('click', function() {
-            fetch('http://localhost:4000/getData')
-            .then(response => response.json())
-            .then(data => {
-                const ctx = document.getElementById('employeeChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data,
-                        datasets: [{
-                            label: 'Employee Names',
-                            data: Array(data.length).fill(1), // Dummy data, since we're only interested in displaying names
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                document.querySelector('.chart-container').style.display = 'block'; // Show the chart container
-            });
+            location.href = '/backendData/employees';
+        });
+
+        document.getElementById('schedule').addEventListener('click', function() {
+            location.href = '/backendData/schedule';
+           
+        });
+        
+        document.getElementById('demandForecast').addEventListener('click', function() {
+            location.href = '/backendData/demandForecast';
+        });
+        document.getElementById('employeeManagement').addEventListener('click',function() {
+            location.href = '/backendData/employeeManagement'
         });
     </script>
 </body>
