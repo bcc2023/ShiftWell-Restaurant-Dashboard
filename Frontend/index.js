@@ -34,7 +34,7 @@ app.get('/weather', async (req, res) => {
     }
 });
 
-app.get('/backendData', async (req, res) => {
+/* app.get('/backendData', async (req, res) => {
     try {
         // Fetch backend data from the backend server
         const backendData = await fetchDataFromBackend();
@@ -45,10 +45,10 @@ app.get('/backendData', async (req, res) => {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-});
+}); */
 
 
-/*app.get('/backendData', async (req, res) => {
+app.get('/backendData', async (req, res) => {
     try {
         // Fetch backend data from the backend server
         const backendData = await fetchDataFromBackend();
@@ -59,7 +59,7 @@ app.get('/backendData', async (req, res) => {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-}); */
+}); 
 
 app.get('/backendData/employees', async (req, res) => {
     try {
