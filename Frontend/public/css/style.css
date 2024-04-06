@@ -110,29 +110,28 @@ body {
 }
 
 /* Employee Management Styles */
-.employee-management {
+.employee-info {
     margin-top: 20px;
 }
 
-.employee-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+.employee-info table {
+    width: 100%; /* Ensure the table takes up the full width */
+    border-collapse: collapse; /* Collapse borders */
 }
 
-.employee-item button {
-    padding: 5px 10px;
-    background-color: #1B4D3E;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.employee-info th, .employee-info td {
+    border: 1px solid #ccc; /* Add border to table cells */
+    padding: 10px; /* Add padding for better spacing */
+}
+
+.employee-info th {
+    background-color: #1B4D3E; /* Optional: Add background color to table header */
+    color: #fff; /* Optional: Add text color to table header */
 }
 
 /* Reporting and Analytics Styles */
 .reporting-analytics {
     margin-top: 20px;
 }
+  
 
