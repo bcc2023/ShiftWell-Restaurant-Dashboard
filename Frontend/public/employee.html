@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/backendData/employees">
-    <title>Employee Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Employee Information</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <style>
-        .chart-container {
-            display: none; /* Hide the chart container by default */
-        }
-    </style> -->
 </head>
 <body>
     <div class="sidebar">
@@ -32,7 +26,8 @@
                     <span>Employees</span>
                 </a>
             </li>
-            <li>
+            <!-- Other menu items -->
+            <li id = "schedule">
                 <a href="#">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
@@ -65,39 +60,31 @@
         </ul>
     </div>
     <div class="main-content">
-        <div class="chart-container"> <!-- Initially hidden -->
-            <canvas id="employeeChart"></canvas>
+        <div class="employee-info">
+            <h3>Employee Information</h3>
+            <form id="employeeForm">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" readonly>
+                <label for="shiftId">Shift ID:</label>
+                <input type="text" id="shiftId" name="shiftId" readonly>
+            </form>
         </div>
     </div>
 
     <script>
-            /* location.href = '/employees'; */
         fetch('http://localhost:4000/getData')
         .then(response => response.json())
         .then(data => {
-            const ctx = document.getElementById('employeeChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: data,
-                    datasets: [{
-                        label: 'Employee Names',
-                        data: Array(data.length).fill(1), // Dummy data, since we're only interested in displaying names
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        document.querySelector('.chart-container').style.display = 'block'; // Show the chart container
-        }); 
+            const employeeIdInput = document.getElementById('employeeId');
+            const shiftIdInput = document.getElementById('shiftId');
+
+            // Assuming 'data' contains employee information
+            const employee = data[0]; // Just selecting the first employee for demonstration
+
+            // Populate employee information form
+            employeeIdInput.value = employee.id;
+            shiftIdInput.value = employee.shiftId;
+        });
     </script>
 </body>
 </html>
