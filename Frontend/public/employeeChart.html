@@ -37,6 +37,12 @@
                     <span>Schedule</span>
                 </a>
             </li>
+            <li id="demandForecast">
+                <a href="#">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Demand Forecast</span>
+                </a>
+            </li>
             <li>
                 <a href="#">
                     <i class="fas fa-chart-line"></i>
@@ -128,6 +134,10 @@
                 document.querySelector('.schedule-container').style.display = 'block'; // Show the chart container
             }); */
         });
+        document.getElementById('demandForecast').addEventListener('click', function() {
+            location.href = '/backendData/demandForecast';
+        });
+
     </script>
 </body>
 </html>
