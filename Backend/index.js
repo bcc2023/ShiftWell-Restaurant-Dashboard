@@ -27,5 +27,10 @@ app.get("/chart", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "employeeChart.html"));
 });
 
+app.get("/getDemandForecast", (req, res) => {
+    const forecastData = ["Forecast 1", "Forecast 2", "Forecast 3", "Forecast 4", "Forecast 5"]; // Example demand forecast data, replace with actual data from your backend
+    res.json(forecastData);
+});
+
 app.listen(4000, () => console.log(`backend app is running and sending stuff`));
 

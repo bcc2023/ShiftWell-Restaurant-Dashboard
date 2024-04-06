@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Chart</title>
+    <title>Demand Forecast</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .chart-container {
-            display: none; /* Hide the chart container by default */
-        }
-    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -20,7 +15,7 @@
         </div>
         <ul class="menu">
             <li class="active">
-                <a href="#">
+                <a href="/backendData">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -31,13 +26,13 @@
                     <span>Employees</span>
                 </a>
             </li>
-            <li id = "schedule">
+            <li>
                 <a href="#">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
                 </a>
             </li>
-            <li id="demandForecast">
+            <li class="active">
                 <a href="#">
                     <i class="fas fa-chart-line"></i>
                     <span>Demand Forecast</span>
@@ -65,24 +60,37 @@
     </div>
     <div class="main-content">
         <div class="chart-container"> <!-- Initially hidden -->
-            <canvas id="employeeChart"></canvas>
+            <canvas id="demandChart"></canvas>
         </div>
     </div>
 
     <script>
-        document.getElementById('employees').addEventListener('click', function() {
-            location.href = '/backendData/employees';
+        fetch('http://localhost:4000/getDemandForecast')
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('demandChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Date 1", "Date 2", "Date 3", "Date 4", "Date 5"], // Example date data, replace with actual dates from your backend
+                    datasets: [{
+                        label: 'Demand Forecast',
+                        data: data, // Demand forecast data obtained from the backend
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            document.querySelector('.chart-container').style.display = 'block'; // Show the chart container
         });
-
-        document.getElementById('schedule').addEventListener('click', function() {
-            location.href = '/backendData/schedule';
-           
-        });
-        
-        document.getElementById('demandForecast').addEventListener('click', function() {
-            location.href = '/backendData/demandForecast';
-        });
-
     </script>
 </body>
 </html>

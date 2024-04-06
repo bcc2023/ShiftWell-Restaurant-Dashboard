@@ -12,6 +12,8 @@ const app = express();
 const scrapeWeatherData = require('./components/scrapeWeatherData');
 const fetchDataFromBackend = require('./components/backendDataFetcher');
 const fetchDataFromBackendSchedule = require('./components/backendDataFetcher');
+const fetchDataFromBackendDemandForecast = require('./components/backendDataFetcher');
+
 
 app.use(cors());
 
@@ -73,6 +75,18 @@ app.get('/backendData/schedule', async (req, res) => {
     }
 });
 
+app.get('/backendData/demandForecast', async (req, res) => {
+    try {
+        // Fetch demand forecast data from the backend server
+        const demandForecastData = await fetchDataFromBackendDemandForecast();
+        
+        // Serve the HTML file containing the demand forecast data
+        res.sendFile(path.join(__dirname, 'public', 'demandForecast.html'),{demandForecastData});
+    } catch (error) {
+        console.error('Error fetching data from backend:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
