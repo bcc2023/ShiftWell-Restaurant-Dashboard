@@ -1,5 +1,6 @@
 **Latest**
-API issue resolved yay
+
+we have clickable webpage now 
 
 
 
@@ -13,14 +14,12 @@ API issue resolved yay
     npm i
     ```
 
-2. to run Frontend code and start api
+2. to start api 
     ```
-    cd Frontend
-
     npm start
     ```
 
-3. to test Frontend alone, in your browser, enter http://localhost:8000/weather to get real-time weather-by-hour at sentosa, you can install a json viewer for better readability.
+3. http://localhost:8000/backendData
 
 
 
