@@ -34,6 +34,18 @@ app.get('/weather', async (req, res) => {
     }
 });
 
+/* app.get('/backendData', async (req, res) => {
+    try {
+        // Fetch backend data from the backend server
+        const backendData = await fetchDataFromBackend();
+        
+        // Serve the HTML file containing the chart with the fetched backend data
+        res.sendFile(path.join(__dirname, 'public', 'dashboard.html'), { backendData });
+    } catch (error) {
+        console.error('Error fetching data from backend:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}); */
 
 
 app.get('/backendData', async (req, res) => {
@@ -47,7 +59,7 @@ app.get('/backendData', async (req, res) => {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-});
+}); 
 
 app.get('/backendData/employees', async (req, res) => {
     try {
@@ -87,6 +99,11 @@ app.get('/backendData/demandForecast', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+app.get('/backendData/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
 
 app.get('/backendData/employeeManagement', async (req, res) => {
     try {

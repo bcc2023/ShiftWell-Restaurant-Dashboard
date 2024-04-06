@@ -13,6 +13,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="logo">
@@ -23,12 +24,6 @@
                 <a href="#">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
-                </a>
-            </li>
-            <li id="employees">
-                <a href="#">
-                    <i class="fas fa-user"></i>
-                    <span>Employees</span>
                 </a>
             </li>
             <li id = "schedule">
@@ -63,16 +58,53 @@
             </li>
         </ul>
     </div>
+
     <div class="main-content">
         <div class="chart-container"> <!-- Initially hidden -->
             <canvas id="employeeChart"></canvas>
         </div>
+
+        <div>
+            <h2> weather-forecast</h2>
+            <div class="weatherWidget"></div>
+        </div>
+
+        <div style="margin-top: 20px;"> <!-- Added margin-top -->
+            <h2>New Booking</h2>
+            <div id="bookingForm" class="form-container">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" placeholder="Name"><br><br>
+                <label for="numPeopleInput">Number of People:</label>
+                <input type="number" id="numPeopleInput" placeholder="Number of People"><br><br>
+                <button onclick="submitBooking()">Submit</button>
+            </div>
+        </div>
+
+        <div id="currentBookings" class="bookings-container">
+            <h2>Current Bookings</h2>
+            <ul id="bookingList"></ul>
+        </div>
+
+        
+
     </div>
 
     <script>
-        document.getElementById('employees').addEventListener('click', function() {
-            location.href = '/backendData/employees';
-        });
+        function submitBooking() {
+            const name = document.getElementById('nameInput').value;
+            const numPeople = document.getElementById('numPeopleInput').value;
+            const booking = { name, numPeople };
+
+            // Add the booking to the list
+            const bookingList = document.getElementById('bookingList');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${name} - ${numPeople} people`;
+            bookingList.appendChild(listItem);
+
+            // Optionally, you can send the booking data to the server using AJAX or fetch
+            // For simplicity, we're not implementing server-side handling here
+        }
+
 
         document.getElementById('schedule').addEventListener('click', function() {
             location.href = '/backendData/schedule';
@@ -85,6 +117,47 @@
         document.getElementById('employeeManagement').addEventListener('click',function() {
             location.href = '/backendData/employeeManagement'
         });
+
+        window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector:".weatherWidget",
+            apiKey:"MXA2GTSJ9MFQSFGWN3AZXD6JQ", //Sign up for your personal key
+            location:"Singapore,Singapore", //Enter an address
+            unitGroup:"metric", //"us" or "metric"
+            forecastDays:5, //how many days forecast to show
+            title:"Singapore", //optional title to show in the 
+            showTitle:true, 
+            showConditions:true
+        });
+    
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+
     </script>
+
+    <!-- <script>
+        window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector:".weatherWidget",
+            apiKey:"MXA2GTSJ9MFQSFGWN3AZXD6JQ", //Sign up for your personal key
+            location:"Singapore,Singapore", //Enter an address
+            unitGroup:"metric", //"us" or "metric"
+            forecastDays:5, //how many days forecast to show
+            title:"Singapore", //optional title to show in the 
+            showTitle:true, 
+            showConditions:true
+        });
+    
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script> -->
 </body>
 </html>
