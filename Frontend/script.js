@@ -27,6 +27,43 @@ async function fetchDemandForecast() {
   }
 }
 
+async function loadWeatherData() {
+    try {
+        const weatherResponse = await fetch('http://localhost:8000/weather');
+        if (!weatherResponse.ok) {
+            throw new Error('Weather data could not be loaded');
+        }
+        const weatherData = await weatherResponse.json();
+        const weatherTableBody = document.getElementById('weather-data');
+
+        // Clear any existing rows
+        weatherTableBody.innerHTML = '';
+
+        // Insert new rows for each weather data point
+        weatherData.forEach((weather, index) => {
+            const row = weatherTableBody.insertRow(index);
+            row.insertCell(0).textContent = weather.time;
+            row.insertCell(1).textContent = weather.weatherCondition;
+            row.insertCell(2).textContent = weather.temperature + '°C';
+            row.insertCell(3).textContent = weather.feelsLike + '°C';
+            row.insertCell(4).textContent = weather.wind + ' km/h';
+            row.insertCell(5).textContent = weather.humidity + '%';
+            row.insertCell(6).textContent = weather.precipitationChance + '%';
+        });
+    } catch (error) {
+        console.error('Error loading weather data:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadWeatherData);
+
+
+// Since the location check was removed based on the latest info,
+// you may call `loadWeatherData` directly or under certain conditions as needed.
+loadWeatherData();
+
+
+
 // Function to fetch staff schedule data from the backend
 async function fetchStaffSchedule() {
   try {
