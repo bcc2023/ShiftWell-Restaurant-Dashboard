@@ -18,6 +18,7 @@
         "express": "^4.18.3",
         "fullcalendar": "^6.1.11",
         "nodemon": "^3.1.0",
-        "puppeteer": "^22.5.0"
+        "puppeteer": "^22.5.0",
+        "vis-timeline": "^7.7.3"
     }
 }

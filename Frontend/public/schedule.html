@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/backendData">
     <title>Schedule Table</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- <style>
-        .schedule-container {
-            display: none;
-        }
-    </style> -->
 </head>
 <body>
     <div class="sidebar">
@@ -27,7 +21,7 @@
             </li>
 
             <li id="staffSchedule">
-                <a href="#">
+                <a href="/backendData/schedule">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
                 </a>
@@ -60,37 +54,59 @@
     </div>
     <div class="main-content">
         <div class="schedule-container">
-            <canvas id="scheduleTable"></canvas>
+            <div class="cardTop">
+    
+                <svg width="497" height="219" viewBox="0 0 497 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M-38.5 196C-38.5 196 34 91 133.5 91C233 91 427 159 532.5 30C638 -99 518 236 518 236L-49 246.5L-38.5 196Z" fill="#FF768E"/>
+                </svg>
+            </div>
+            <h1>Weekly Schedule</h1>
+            <div class="lines">
+                <div class="dot"></div>
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="line"></div>
+                <div class="dot"></div>
+                <div class="line"></div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                  
+                  <h4>16:30</h4>
+                  <p>Believing Is The Absence<br> Of Doubt</p>
+                </div>
+                <div class="card mid">
+                  <h4>15:22</h4>
+                  <p></p>
+                </div>
+                <div class="card last">
+                  <h4>14:15</h4>
+                  <p>Break Through Self Doubt<br> And Fear</p>
+                </div>
+              </div>
+            </div> 
+            
         </div>
     </div>
     <script>
         fetch('http://localhost:4000/getDataSchedule')
         .then(response => response.json())
         .then(data => {
-            const ctx = document.getElementById('scheduleTable').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: data,
-                    datasets: [{
-                        label: 'Employee Names',
-                        data: Array(data.length).fill(1), // Dummy data, since we're only interested in displaying names
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
+            const cardContainers = document.querySelector('.cards');
+
+            // Populate the timetable with shifts
+            data.forEach(employee => {
+                const cardsContainer = document.querySelector('.cards');
+                const cardMid = cardsContainer.querySelector('.card.mid p');
+                const cardLast = cardsContainer.querySelector('.card.last p');
+
+                // Populate the "mid" card
+                cardMid.textContent = employee.name + ' - ' + employee.shiftId;
+
+                // Populate the last card
+                cardLast.textContent = employee.name + ' - ' + employee.shiftId;
+            })
             });
-            document.querySelector('.schedule-container').style.display = 'block'; // Show the chart container
-        });
-        
     </script>
 </body>
 </html>

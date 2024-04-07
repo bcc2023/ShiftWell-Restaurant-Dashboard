@@ -118,6 +118,18 @@ app.get('/backendData/employeeManagement', async (req, res) => {
     }
 });
 
+app.get('/backendData/getDataSchedule', async (req, res) => {
+    try {
+        const backendData = await fetchDataFromBackendSchedule();
+        res.sendFile(path.join(__dirname, 'public', 'schedule_test.html'), { backendData });
+    } catch (error) {
+        console.error('Error', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+    
+
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

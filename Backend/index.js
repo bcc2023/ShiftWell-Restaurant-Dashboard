@@ -21,7 +21,13 @@ app.get("/getData",(req,res)=>{
 });
 
 app.get("/getDataSchedule",(req,res)=>{
-    const employees = ["John", "Jane", "Doe", "Alice", "Bob"]; // Example employee names, replace with actual data from your backend
+    const employees = [
+        { id: 1, name: "John", shiftId: "Morning" },
+        { id: 2, name: "Jane", shiftId: "Afternoon" },
+        { id: 3, name: "Doe", shiftId: "Night" },
+        { id: 4, name: "Alice", shiftId: "Morning" },
+        { id: 5, name: "Bob", shiftId: "Afternoon" }
+    ]; // Example employee names, replace with actual data from your backend
     res.json(employees);
 });
 
