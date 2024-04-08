@@ -168,10 +168,11 @@ body {
     height: 100%;
 }
 
-
 .timeline-container {
     display: flex;
     justify-content: space-around;
+    column-count: 7;
+    column-gap: 10px;
 }
 
 .container {
@@ -179,7 +180,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 800px;
-	margin: 0 auto;
+	margin: 5px auto;
 }
 
 .first-box,
@@ -203,25 +204,24 @@ body {
     align-items:center;
 }
 .date-area>span {
-	font-size: 10px;
+	font-size: 8px;
 	line-height: 40px;
-	margin: auto;
+	margin: 5px;
 	background: #14b6c1;
 	width: 40px;
-	height: 40px;
 	border-radius: 50%;
 }
 .content {
 	text-align: center;
 	padding: 10px;
-	border-radius: 5px;
-    font-size: 10px;
-	color: #858585;
+	border-radius: 10px;
+    font-size: 8px;
+	color: black;
 	order: 3;
 	width: 50%;
 	padding-left: 10px;
 	background: #fff;
-    margin-bottom: 2%;
+    margin: 10px;
 }
 
 
