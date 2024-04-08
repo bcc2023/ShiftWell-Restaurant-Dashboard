@@ -78,10 +78,45 @@
                     <!-- Employee table rows will be dynamically added here -->
                 </tbody>
             </table>
+            <div id="successMessage" style="display: none; color: green;">Employee added successfully!</div>
         </div>
     </div>
 
     <script>
+        const showSuccessMessage = () => {
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+
+            const message = document.createElement('div');
+            message.classList.add('modal-content');
+            message.textContent = 'Employee added successfully!';
+
+            modal.appendChild(message);
+            document.body.appendChild(modal);
+
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center'; // Center horizontally
+            modal.style.alignItems = 'center'; // Center vertically
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
+            // Style the message
+            message.style.backgroundColor = '#fff';
+            message.style.padding = '20px';
+            message.style.borderRadius = '5px';
+            message.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)'; // Drop shadow
+
+
+            // Hide the modal after 1 second
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.removeChild(modal);
+            }, 1000);
+        };
         // Function to update data on backend
         const updateDataOnBackend = async (data) => {
             try {
@@ -132,6 +167,8 @@
                 shiftId: employeeShift
             };
 
+            showSuccessMessage();
+
             try {
                 // Call function to update data on backend
                 const response = await updateDataOnBackend(newEmployee);
@@ -152,5 +189,6 @@
             }
         });
     </script>
+    <script src="../components/update_employee.js"></script>
 </body>
 </html>
