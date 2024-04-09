@@ -67,7 +67,7 @@ body {
 .main-content {
     background: #ebe9e9;
     padding: 2rem;
-    margin: 2rem 2rem 2rem 240px; /* Added left margin to avoid overlap with sidebar */
+    margin: 4rem 4rem 4rem 240px; /* Added left margin to avoid overlap with sidebar */
 }
 
 .header-wrapper {
@@ -129,15 +129,13 @@ body {
     color: #fff; /* Optional: Add text color to table header */
 }
 
-
-/*schedule*/
-.schedule-container{
-    height: 700px;
-    margin:0;
+/* Schedule Styles */
+.schedule-container {
+    padding: 20px;
 }
 
 .tablink {
-    background-color: #555;
+    background-color: #09450b; /* Change button background color to green */
     color: white;
     float: left;
     border: none;
@@ -146,99 +144,104 @@ body {
     padding: 14px 16px;
     font-size: 17px;
     width: 25%;
+    transition: background-color 0.3s ease; /* Add smooth transition */
 }
-  
+
 .tablink:hover {
-    background-color: #777;
+    background-color: #0d5811; /* Darker green on hover */
 }
-  
+
 .tabcontent {
     color: black;
+    padding: 20px;
     display: none;
-    padding: 100px 20px;
     height: 100%;
 }
 
 .timeline-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     column-count: 7;
     column-gap: 10px;
 }
 
 .container {
-	font-family: 'Roboto', sans-serif;
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 800px;
-	margin: 5px auto;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 5px auto;
 }
 
 .first-box,
 .second-box,
 .last-box {
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: center;
-	width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
 }
-
 
 .date-area {
-	display: flex;
-	background: linear-gradient(to right, #e7e7e7 45%, #000 45%, #000 45%, #e7e7e7 50%);
-	order: 2;
-	text-align: center;
-	color: #fff;
-	font-size: 5px;
-	flex-basis: 80px;
-    align-items:center;
+    display: flex;
+    background: linear-gradient(to right, #e7e7e7 45%, #000 45%, #000 45%, #e7e7e7 50%);
+    order: 2;
+    text-align: center;
+    color: #fff;
+    font-size: 5px;
+    flex-basis: 80px;
+    align-items: center;
 }
+
 .date-area>span {
-	font-size: 8px;
-	line-height: 40px;
-	margin: 5px;
-	background: #14b6c1;
-	width: 40px;
-	border-radius: 50%;
-}
-.content {
-	text-align: center;
-	padding: 10px;
-	border-radius: 10px;
     font-size: 8px;
-	color: black;
-	order: 3;
-	width: 50%;
-	padding-left: 10px;
-	background: #fff;
+    line-height: 40px;
+    margin: 5px;
+    background: #0c4d0e; /* Green shape color */
+    width: 40px;
+    border-radius: 50%;
+}
+
+.content {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: black;
+    order: 3;
+    width: 50%;
+    padding-left: 10px;
+    background: #fff;
     margin: 10px;
 }
 
-
-
-
-  
-.weatherWidget {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+/* Demand Forecast Styles */
+.main-content {
+    padding: 20px;
 }
 
-.weatherWidget th,
-.weatherWidget td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+.chart-container {
+    display: none; /* Initially hidden */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.weatherWidget th {
-    background-color: #f2f2f2;
+/* Chart Styles */
+#demandChart {
+    background-color: #f5f5f5; /* Light gray background for chart */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
-.weatherWidget tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* Chart Title */
+.chart-title {
+    text-align: center;
+    font-size: 24px;
+    color: #1B4D3E; /* Green color for chart title */
+    margin-bottom: 20px;
 }
+
 
 /* Input box styling */
 input[type="text"],
@@ -282,3 +285,5 @@ button {
 button:hover {
     background-color: #0a4629; /* Change background color on hover */
 }
+
+
