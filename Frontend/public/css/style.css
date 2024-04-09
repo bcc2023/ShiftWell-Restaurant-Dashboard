@@ -119,6 +119,7 @@ body {
 .booking-section,
 .revenue-container {
     flex: 1; /* Allow each section to grow */
+    margin-top: 20px;
     margin-right: 20px; /* Adds spacing between sections */
     background-color: #f9f9f9; /* Background color for booking and revenue sections */
     padding: 20px; /* Add padding to each section */
