@@ -10,6 +10,51 @@
 </head>
 
 <style>
+    
+    /* Add to your existing styles */
+.dashboard-row {
+    display: flex;
+    justify-content: space-between; /* This separates the booking and revenue sections */
+    align-items: flex-start; /* Aligns items to the top */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens */
+}
+
+.booking-section,
+.revenue-container {
+    flex: 1; /* Allows each section to grow */
+    margin-right: 20px; /* Adds spacing between sections */
+}
+
+.revenue-container {
+    max-width: calc(50% - 20px); /* Sets maximum width to half of the parent minus margin */
+}
+
+/* Ensure the weather container is full width and booking/revenue sections are half */
+.weather-container-full-width,
+.dashboard-row > div {
+    width: 100%;
+}
+
+.weather-container-full-width {
+    margin-bottom: 25px; /* Adds space below the weather widget */
+}
+
+
+@media (min-width: 768px) { /* Adjust this breakpoint as needed */
+    .dashboard-row > div {
+        width: calc(50% - 10px); /* Sets width to half of parent minus half of the margin */
+    }
+}
+
+#bookingForm button {
+    margin-bottom: 2.5px; /* Adjust the value as needed */
+}
+
+/* Additional margin for the Current Bookings section */
+#currentBookings {
+    margin-top: 2.5px; /* Adjust the value as needed */
+}
+    
   #weather-container {
     margin-top: 20px;
   }
@@ -83,10 +128,11 @@
     </div>
     <div class="main-content">
         <h1>Dashboard</h1>
-        <div id="weather-container" class="weatherWidget">
+        <div id="weather-container" class="weatherWidget weather-container-full-width">
             <!-- Weather widget will be inserted here -->
         </div>
-
+        
+        <div class="dashboard-row">
         <div class="booking-section">
             <h2>New Booking</h2>
             <div id="bookingForm" class="form-container">
@@ -96,31 +142,20 @@
                 <input type="number" id="numPeopleInput" placeholder="Number of People"><br><br>
                 <button onclick="submitBooking()">Submit</button>
             </div>
-        </div>
-
-        <div id="currentBookings" class="bookings-container">
-            <h2>Current Bookings</h2>
-            <ul id="bookingList">
-                <!-- Current bookings will be inserted here -->
-            </ul>
+            <div id="currentBookings" class="bookings-container">
+                <h2>Current Bookings</h2>
+                <ul id="bookingList">
+                    <!-- Current bookings will be inserted here -->
+                </ul>
+            </div>
         </div>
 
         <div class="revenue-container">
             <h2>Past Week Revenue</h2>
-            <table class="revenue-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Revenue</th>
-                    </tr>
-                </thead>
-                <tbody id="revenue-data">
-                    <!-- Revenue data rows will be inserted here by the script -->
-                </tbody>
-            </table>
             <canvas id="revenueChart"></canvas>
         </div>
     </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="/script.js"></script>
@@ -129,7 +164,7 @@
         window.weatherWidgetConfig = window.weatherWidgetConfig || [];
         window.weatherWidgetConfig.push({
             selector: ".weatherWidget",
-            apiKey: "MXA2GTSJ9MFQSFGWN3AZXD6JQ", // Replace with your actual API key
+            apiKey: "MXA2GTSJ9MFQSFGWN3AZXD6JQ", 
             location: "Singapore, Singapore",
             unitGroup: "metric",
             forecastDays: 5,

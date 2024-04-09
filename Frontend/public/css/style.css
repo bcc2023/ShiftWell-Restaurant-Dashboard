@@ -185,6 +185,8 @@ body {
     width: 100%;
 }
 
+    
+
 .date-area {
     display: flex;
     background: linear-gradient(to right, #e7e7e7 45%, #000 45%, #000 45%, #e7e7e7 50%);
@@ -195,6 +197,11 @@ body {
     flex-basis: 80px;
     align-items: center;
 }
+.weather-container-full-width,
+.dashboard-row > div {
+    width: 100%;
+}
+
 
 .date-area>span {
     font-size: 8px;
