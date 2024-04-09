@@ -49,6 +49,7 @@ app.get("/getDemandForecast", (req, res) => {
     res.json(forecastData);
 });
 
+// Route to update employee data
 app.put("/updateData", (req, res) => {
     const updatedEmployee = req.body;
 
@@ -57,13 +58,10 @@ app.put("/updateData", (req, res) => {
     if (index !== -1) {
         // Update the employee data
         employees[index] = updatedEmployee;
-
-        // Send the updated employees array as a response
-        res.json(employees);
+        res.json({ message: "Employee data updated successfully", updatedEmployee });
     } else {
         res.status(404).json({ error: "Employee not found" });
     }
 });
-
 
 app.listen(4000, () => console.log(`Backend app is running and serving data.`));
