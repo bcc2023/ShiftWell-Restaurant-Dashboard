@@ -119,6 +119,76 @@ body {
     line-height: 1.5;
 }
 
+/* employeeChart style */
+.dashboard-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.booking-section,
+.revenue-container {
+    flex: 1; /* Allow each section to grow */
+    margin-right: 20px; /* Adds spacing between sections */
+}
+
+.revenue-container {
+    max-width: calc(50% - 20px); /* Sets maximum width to half of the parent minus margin */
+}
+
+.weather-container-full-width {
+    width: 100%; /* Set the weather container to take the full width */
+    margin-bottom: 40px; /* Adds space below the weather widget */
+}
+
+
+@media (min-width: 768px) {
+    .dashboard-row > div {
+        width: calc(50% - 10px);
+    }
+}
+
+#bookingForm button {
+    margin-bottom: 2.5px;
+}
+
+#currentBookings {
+    margin-top: 2.5px;
+}
+
+#weather-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+table.weather-table,
+.revenue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table.weather-table th,
+.revenue-table th,
+table.weather-table td,
+.revenue-table td {
+    border: 1px solid #cdc5c5;
+    padding: 10px;
+    text-align: left;
+}
+
+table.weather-table th,
+.revenue-table th {
+    background-color: #f2f2f2;
+}
+
+table.weather-table tr:nth-child(even),
+.revenue-table tr:nth-child(even) {
+    background-color: #d7d6d6;
+}
+
+
 /* Employee Management Styles */
 .employee-info {
     margin-top: 20px; /* Add margin above the table */
@@ -266,6 +336,7 @@ body {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="number"],
 textarea,
 select {
     padding: 10px; /* Add padding to the input */
@@ -282,6 +353,7 @@ select {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
+input[type="number"]:focus, 
 textarea:focus,
 select:focus {
     border-color: #007bff; /* Change border color when input is focused */
