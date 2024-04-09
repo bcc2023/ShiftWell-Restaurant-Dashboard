@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | GoodOldDays ShiftWell System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<style>
+  #weather-container {
+    margin-top: 20px;
+  }
+
+  table.weather-table, .revenue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  table.weather-table th, .revenue-table th,
+  table.weather-table td, .revenue-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  table.weather-table th, .revenue-table th {
+    background-color: #f2f2f2;
+  }
+
+  table.weather-table tr:nth-child(even), .revenue-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="/images/logo.png" alt="GoodOldDays Logo">
+        </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="/backendData">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <!-- Other menu items -->
+            <li id="schedule">
+                <a href="/backendData/schedule">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+            </li>
+            <li>
+                <a href="/backendData/demandForecast">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Demand Forecast</span>
+                </a>
+            </li>
+            <li>
+                <a href="/backendData/employeeManagement">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Employee Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="/backendData/reportsAnalytics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports & Analytics</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="/logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Dashboard</h1>
+        <div id="weather-container" class="weatherWidget">
+            <!-- Weather widget will be inserted here -->
+        </div>
+
+        <div class="booking-section">
+            <h2>New Booking</h2>
+            <div id="bookingForm" class="form-container">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" placeholder="Name"><br><br>
+                <label for="numPeopleInput">Number of People:</label>
+                <input type="number" id="numPeopleInput" placeholder="Number of People"><br><br>
+                <button onclick="submitBooking()">Submit</button>
+            </div>
+        </div>
+
+        <div id="currentBookings" class="bookings-container">
+            <h2>Current Bookings</h2>
+            <ul id="bookingList">
+                <!-- Current bookings will be inserted here -->
+            </ul>
+        </div>
+
+        <div class="revenue-container">
+            <h2>Past Week Revenue</h2>
+            <table class="revenue-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="revenue-data">
+                    <!-- Revenue data rows will be inserted here by the script -->
+                </tbody>
+            </table>
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/script.js"></script>
+    <script>
+        // Weather Widget Config
+        window.weatherWidgetConfig = window.weatherWidgetConfig || [];
+        window.weatherWidgetConfig.push({
+            selector: ".weatherWidget",
+            apiKey: "MXA2GTSJ9MFQSFGWN3AZXD6JQ", // Replace with your actual API key
+            location: "Singapore, Singapore",
+            unitGroup: "metric",
+            forecastDays: 5,
+            title: "Singapore",
+            showTitle: true,
+            showConditions: true
+        });
+
+        // Weather Widget Script
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+        // Function to get the last 7 dates
+        function getLast7Days() {
+        const dates = [];
+        for (let i = 6; i >= 0; i--) {
+            const d = new Date();
+            d.setDate(d.getDate() - i);
+            dates.push(d.toISOString().split('T')[0]);
+        }
+        return dates;
+    }
+
+    // Function to simulate revenue data
+    function simulateRevenueData() {
+        const last7Days = getLast7Days();
+        const revenueData = [];
+        for (const date of last7Days) {
+            // Simulating revenue for each date
+            revenueData.push(Math.floor(Math.random() * 1000 + 1000));
+        }
+        return revenueData;
+    }
+
+    // Plotting the bar graph using Chart.js
+    document.addEventListener('DOMContentLoaded', () => {
+        const dates = getLast7Days();
+        const revenues = simulateRevenueData();
+
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Revenue',
+                    data: revenues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+
+        function submitBooking() {
+            const name = document.getElementById('nameInput').value;
+            const numPeople = document.getElementById('numPeopleInput').value;
+            const booking = { name, numPeople };
+
+            // Add the booking to the list
+            const bookingList = document.getElementById('bookingList');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${name} - ${numPeople} people`;
+            bookingList.appendChild(listItem);
+
+            // Optionally, you can send the booking data to the server using AJAX or fetch
+            // For simplicity, we're not implementing server-side handling here
+        }
+
+
+        document.getElementById('schedule').addEventListener('click', function() {
+            location.href = '/backendData/schedule';
+           
+        });
+        
+        document.getElementById('demandForecast').addEventListener('click', function() {
+            location.href = '/backendData/demandForecast';
+        });
+        document.getElementById('employeeManagement').addEventListener('click',function() {
+            location.href = '/backendData/employeeManagement'
+        });
+
+        
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+
+        async function fetchAndPlotRevenueData() {
+        try {
+            const response = await fetch('/api/revenue');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const revenueData = await response.json();
+
+            // Assuming revenueData is an array of objects { date, revenue }
+            const dates = revenueData.map(data => data.date);
+            const revenues = revenueData.map(data => data.revenue);
+
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            const revenueChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Revenue',
+                        data: revenues,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Failed to fetch revenue data:', error);
+        }
+    }
+
+    // Call the function when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', fetchAndPlotRevenueData);
+    </script>
+</body>
+</html>
