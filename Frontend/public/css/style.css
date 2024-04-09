@@ -129,15 +129,6 @@ body {
     color: #fff; /* Optional: Add text color to table header */
 }
 
-/* Reporting and Analytics Styles */
-.reporting-analytics {
-    margin-top: 20px;
-}
-  
-
-.weatherWidget {
-    margin-top: 20px;
-}
 
 /*schedule*/
 .schedule-container{
@@ -247,4 +238,47 @@ body {
 
 .weatherWidget tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+/* Input box styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    padding: 10px; /* Add padding to the input */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 16px; /* Adjust font size */
+    width: 100%; /* Set width to 100% */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    margin-bottom: 10px; /* Add some spacing between input boxes */
+    transition: border-color 0.3s ease; /* Add smooth transition for border color */
+}
+
+/* Style for when input is focused */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff; /* Change border color when input is focused */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px; /* Add padding to the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: #105921; /* Set background color */
+    color: #fff; /* Set text color */
+    transition: background-color 0.3s ease; /* Add smooth transition for background color */
+}
+
+/* Style for when button is hovered */
+button:hover {
+    background-color: #0e5030; /* Change background color on hover */
 }
