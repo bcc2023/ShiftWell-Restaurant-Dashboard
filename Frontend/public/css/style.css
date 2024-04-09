@@ -93,7 +93,7 @@ body {
 .main-content {
     background: #ebe9e9;
     padding: 2rem;
-    margin: 2rem 2rem 4rem 240px; /* Added left margin to avoid overlap with sidebar */
+    margin: 0rem 2rem 4rem 240px; /* Added left margin to avoid overlap with sidebar */
 }
 
 .user-profile img {
