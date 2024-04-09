@@ -111,12 +111,14 @@ body {
 
 /* Employee Management Styles */
 .employee-info {
-    margin-top: 20px;
+    margin-top: 20px; /* Add margin above the table */
+    
 }
 
 .employee-info table {
     width: 100%; /* Ensure the table takes up the full width */
     border-collapse: collapse; /* Collapse borders */
+    margin-top: 40px; /* Add margin above the table */
 }
 
 .employee-info th, .employee-info td {
