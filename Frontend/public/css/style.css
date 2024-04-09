@@ -67,7 +67,7 @@ body {
 .main-content {
     background: #ebe9e9;
     padding: 2rem;
-    margin: 2rem 2rem 2rem 240px; /* Added left margin to avoid overlap with sidebar */
+    margin: 4rem 4rem 4rem 240px; /* Added left margin to avoid overlap with sidebar */
 }
 
 .header-wrapper {
@@ -129,54 +129,161 @@ body {
     color: #fff; /* Optional: Add text color to table header */
 }
 
-/* Reporting and Analytics Styles */
-.reporting-analytics {
-    margin-top: 20px;
-}
-  
-
-.weatherWidget {
-    margin-top: 20px;
-}
-
-
-.weatherWidget {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.weatherWidget th,
-.weatherWidget td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.weatherWidget th {
-    background-color: #f2f2f2;
-}
-
-.weatherWidget tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 9999; /* Ensure it's above other content */
-}
-
-.modal-content {
-    background-color: white;
+/* Schedule Styles */
+.schedule-container {
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
 }
+
+.tablink {
+    background-color: #09450b; /* Change button background color to green */
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+    transition: background-color 0.3s ease; /* Add smooth transition */
+}
+
+.tablink:hover {
+    background-color: #0d5811; /* Darker green on hover */
+}
+
+.tabcontent {
+    color: black;
+    padding: 20px;
+    display: none;
+    height: 100%;
+}
+
+.timeline-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    column-count: 7;
+    column-gap: 10px;
+}
+
+.container {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 5px auto;
+}
+
+.first-box,
+.second-box,
+.last-box {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.date-area {
+    display: flex;
+    background: linear-gradient(to right, #e7e7e7 45%, #000 45%, #000 45%, #e7e7e7 50%);
+    order: 2;
+    text-align: center;
+    color: #fff;
+    font-size: 5px;
+    flex-basis: 80px;
+    align-items: center;
+}
+
+.date-area>span {
+    font-size: 8px;
+    line-height: 40px;
+    margin: 5px;
+    background: #0c4d0e; /* Green shape color */
+    width: 40px;
+    border-radius: 50%;
+}
+
+.content {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 10px;
+    color: black;
+    order: 3;
+    width: 50%;
+    padding-left: 10px;
+    background: #fff;
+    margin: 10px;
+}
+
+/* Demand Forecast Styles */
+.main-content {
+    padding: 20px;
+}
+
+.chart-container {
+    display: none; /* Initially hidden */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Chart Styles */
+#demandChart {
+    background-color: #f5f5f5; /* Light gray background for chart */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Chart Title */
+.chart-title {
+    text-align: center;
+    font-size: 24px;
+    color: #1B4D3E; /* Green color for chart title */
+    margin-bottom: 20px;
+}
+
+
+/* Input box styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    padding: 10px; /* Add padding to the input */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 16px; /* Adjust font size */
+    width: 100%; /* Set width to 100% */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    margin-bottom: 10px; /* Add some spacing between input boxes */
+    transition: border-color 0.3s ease; /* Add smooth transition for border color */
+}
+
+/* Style for when input is focused */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff; /* Change border color when input is focused */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px; /* Add padding to the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: #055618d9; /* Set background color */
+    color: #fff; /* Set text color */
+    transition: background-color 0.3s ease; /* Add smooth transition for background color */
+}
+
+/* Style for when button is hovered */
+button:hover {
+    background-color: #0a4629; /* Change background color on hover */
+}
+
+

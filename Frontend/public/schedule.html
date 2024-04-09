@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/backendData">
-    <title>Schedule Table</title>
+    <title>Schedule</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="sidebar">
@@ -13,14 +14,14 @@
             <img src="/images/logo.png" alt="GoodOldDays Logo">
         </div>
         <ul class="menu">
-            <li class="active">
+            <li>
                 <a href="/backendData">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <li id="staffSchedule">
+            <li id="schedule" class="active">
                 <a href="/backendData/schedule">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Schedule</span>
@@ -38,12 +39,6 @@
                     <span>Employee Management</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Reports &amp; Analytics</span>
-                </a>
-            </li>
             <li class="logout">
                 <a href="#">
                     <i class="fas fa-sign-out-alt"></i>
@@ -52,61 +47,504 @@
             </li>
         </ul>
     </div>
+
     <div class="main-content">
         <div class="schedule-container">
-            <div class="cardTop">
-    
-                <svg width="497" height="219" viewBox="0 0 497 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M-38.5 196C-38.5 196 34 91 133.5 91C233 91 427 159 532.5 30C638 -99 518 236 518 236L-49 246.5L-38.5 196Z" fill="#FF768E"/>
-                </svg>
+            <button class="tablink" onclick="openPage('Reduce Cost', this)">Reduce Cost</button>
+            <button class="tablink" onclick="openPage('Good Service', this)">Good Service</button>
+
+            <div id="Reduce Cost" class="tabcontent">
+                <h3>Timeline</h3>
+                <div class="timeline-container">
+                    <div class="day1">
+                        <h7>Day 1</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day2">
+                        <h7>Day 2</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day3">
+                        <h7>Day 3</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day4">
+                        <h7>Day 4</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day5">
+                        <h7>Day 5</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day6">
+                        <h7>Day 6</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day7">
+                        <h7>Day 7</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1>Weekly Schedule</h1>
-            <div class="lines">
-                <div class="dot"></div>
-                <div class="line"></div>
-                <div class="dot"></div>
-                <div class="line"></div>
-                <div class="dot"></div>
-                <div class="line"></div>
+            <div id="Good Service" class="tabcontent">
+                <h3>Timeline</h3>
+                <div class="timeline-container">
+                    <div class="day1">
+                        <h7>Day 1</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day2">
+                        <h7>Day 2</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day3">
+                        <h7>Day 3</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day4">
+                        <h7>Day 4</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day5">
+                        <h7>Day 5</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day6">
+                        <h7>Day 6</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day7">
+                        <h7>Day 7</h7>
+                        <div class="container">
+                            <div class="first-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Morning</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="second-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Afternoon</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="last-box">
+                                <div class="custom"></div>
+                                <div class="date-area">
+                                    <span>Night</span>
+                                </div>
+                                <div class="content">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="cards">
-                <div class="card">
-                  
-                  <h4>16:30</h4>
-                  <p>Believing Is The Absence<br> Of Doubt</p>
-                </div>
-                <div class="card mid">
-                  <h4>15:22</h4>
-                  <p></p>
-                </div>
-                <div class="card last">
-                  <h4>14:15</h4>
-                  <p>Break Through Self Doubt<br> And Fear</p>
-                </div>
-              </div>
-            </div> 
-            
         </div>
     </div>
     <script>
+        function openPage(pageName, element){
+            var i, tabcontent;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            document.getElementById(pageName).style.display='block';
+        }
+
         fetch('http://localhost:4000/getDataSchedule')
         .then(response => response.json())
         .then(data => {
-            const cardContainers = document.querySelector('.cards');
-
-            // Populate the timetable with shifts
+            const tabcontent = document.querySelector('.tabcontent');
             data.forEach(employee => {
-                const cardsContainer = document.querySelector('.cards');
-                const cardMid = cardsContainer.querySelector('.card.mid p');
-                const cardLast = cardsContainer.querySelector('.card.last p');
+                const dayNumber = employee.id;
+                const dayContainer = tabcontent.querySelector(`.day${dayNumber} .container`);
 
-                // Populate the "mid" card
-                cardMid.textContent = employee.name + ' - ' + employee.shiftId;
-
-                // Populate the last card
-                cardLast.textContent = employee.name + ' - ' + employee.shiftId;
-            })
+                if (employee.shiftId === "Morning") {
+                    const shiftBox = dayContainer.querySelector(`.first-box .content`);
+                    shiftBox.textContent = employee.name;
+                } else if (employee.shiftId === "Afternoon") {
+                    const shiftBox = dayContainer.querySelector(`.second-box .content`);
+                    shiftBox.textContent = employee.name;
+                } else if (employee.shiftId === "Night") {
+                    const shiftBox = dayContainer.querySelector(`.last-box .content`);
+                    shiftBox.textContent = employee.name;
+                }
             });
+
+        });
+
     </script>
 </body>
 </html>
