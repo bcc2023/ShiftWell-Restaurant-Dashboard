@@ -273,12 +273,12 @@ button {
     border-radius: 5px; /* Add rounded corners */
     font-size: 16px; /* Adjust font size */
     cursor: pointer; /* Change cursor to pointer on hover */
-    background-color: #105921; /* Set background color */
+    background-color: #055618d9; /* Set background color */
     color: #fff; /* Set text color */
     transition: background-color 0.3s ease; /* Add smooth transition for background color */
 }
 
 /* Style for when button is hovered */
 button:hover {
-    background-color: #0e5030; /* Change background color on hover */
+    background-color: #0a4629; /* Change background color on hover */
 }
