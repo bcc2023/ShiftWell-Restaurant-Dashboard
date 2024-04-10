@@ -180,6 +180,8 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
+
+
 /* Schedule Styles */
 .schedule-container {
     padding: 20px;
@@ -203,11 +205,12 @@ body {
 }
 
 .tabcontent {
-    color: black;
-    padding: 20px;
     display: none;
-    height: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
 }
+
 
 .day1
 .day2
@@ -223,6 +226,7 @@ body {
 .timetable {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
   
 .timetable th, .timetable td {
