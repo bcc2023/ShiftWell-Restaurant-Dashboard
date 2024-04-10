@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demand Forecast</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="sidebar">
         <div class="logo">
@@ -23,7 +24,7 @@
             <li>
                 <a href="/backendData/schedule">
                     <i class="fas fa-calendar-alt"></i>
-                    <span>Schedule</span>
+                    <span> Recommended Schedule </span>
                 </a>
             </li>
             <li class="active">
@@ -47,39 +48,60 @@
             </li>
         </ul>
     </div>
+
     <div class="main-content">
-        <div class="chart-container"> <!-- Initially hidden -->
-            <canvas id="demandChart"></canvas>
+        <h1>Customer Demand Forecast</h1>
+        <div class="chart-container">
+            <canvas id="demandChart"  style="width:100%;max-width:600px"></canvas>
         </div>
     </div>
 
+
+
     <script>
-        fetch('http://localhost:4000/getDemandForecast')
-        .then(response => response.json())
-        .then(data => {
-            const ctx = document.getElementById('demandChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Date 1", "Date 2", "Date 3", "Date 4", "Date 5"], // Example date data, replace with actual dates from your backend
-                    datasets: [{
-                        label: 'Demand Forecast',
-                        data: data, // Demand forecast data obtained from the backend
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+    const xValues = Array.from({ length: 13 }, (_, i) => `${i + 10}:00`);
+
+    const yValues = [7,33,43,59,69,39,10,19,14,60,64,65,34,12];
+    
+    new Chart("demandChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(255, 105, 180, 1.0)", // Change line color to pink
+            data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+            yAxes: [{
+                ticks: {min: 0, max: 90},
+                scaleLabel: { // Add y-axis label
+                display: true,
+                labelString: 'Population',
+                fontColor: '#333', // Label font color
+                fontStyle: 'bold', // Label font style
+                fontSize: 14 // Label font size
                 }
-            });
-            document.querySelector('.chart-container').style.display = 'block'; // Show the chart container
+            }],
+            xAxes: [{
+                scaleLabel: { // Add x-axis label
+                display: true,
+                labelString: 'Hours',
+                fontColor: '#333', // Label font color
+                fontStyle: 'bold', // Label font style
+                fontSize: 14 // Label font size
+                }
+            }]
+            }
+        }
         });
+
     </script>
+    
 </body>
 </html>
