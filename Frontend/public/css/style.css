@@ -11,17 +11,33 @@
 /* General Styles */
 h1 {
     color: #1B4D3E; /* Set text color */
-    font-family: Arial, sans-serif; /* Set font family */
+    font-family: 'Arial Black', Arial, sans-serif; /* Set font family */
     font-size: 32px; /* Set font size */
     font-weight: bold; /* Set font weight */
+    text-align: left; /* Center align the text */
+    letter-spacing: 2px; /* Add letter spacing */
+    background-color: #aec4b7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 2rem;
+    /* Add any other styles you want */
+}
+
+h2 {
+    color:#1B4D3E; /* Set text color */
+    font-family: 'Arial Black', Arial, sans-serif; /* Set font family */
+    font-size: 20px; /* Set font size */
+    font-weight: bold; /* Set font weight */
     text-align: center; /* Center align the text */
-    margin-top: 20px; /* Add margin to the top */
     /* Add any other styles you want */
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    background-color: #f5f5f5;
+    font-family: "Poppins", sans-serif; /* Set font family */
+    background-color: #f5f5f5; /* Set background color */
+    color: #333; /* Set default text color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    line-height: 1.6; /* Set line height */
 }
 
 /* Sidebar Styles */
@@ -77,17 +93,7 @@ body {
 .main-content {
     background: #ebe9e9;
     padding: 2rem;
-    margin: 2rem 2rem 4rem 240px; /* Added left margin to avoid overlap with sidebar */
-}
-
-.header-wrapper {
-    background: #fff;
-    border-radius: 10px;
-    padding: 10px 2rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0rem 2rem 4rem 240px; /* Added left margin to avoid overlap with sidebar */
 }
 
 .user-profile img {
@@ -101,44 +107,77 @@ body {
     font-size: 20px;
 }
 
-.card-container {
+
+/* employeeChart style */
+.dashboard-row {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
-.card-wrapper {
-    background-color: #f9f9f9;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: calc(50% - 20px);
-    margin-bottom: 15px;
-    line-height: 1.5;
+.booking-section,
+.revenue-container {
+    flex: 1; /* Allow each section to grow */
+    margin-top: 20px;
+    margin-right: 20px; /* Adds spacing between sections */
+    background-color: #f9f9f9; /* Background color for booking and revenue sections */
+    padding: 20px; /* Add padding to each section */
+    border-radius: 10px; /* Set border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
+
+.revenue-container {
+    max-width: calc(50% - 20px); /* Sets maximum width to half of the parent minus margin */
+}
+
+.weather-container {
+    width: 100%; /* Set the weather container to take the full width */
+    margin-bottom: 40px; /* Adds space below the weather widget */
+    padding: 20px; /* Add padding to weather container */
+}
+
+
+/* Media query for smaller screens */
+@media (min-width: 768px) {
+    .dashboard-row > div {
+        width: calc(50% - 10px);
+    }
+}
+
+/* Additional styling for buttons and list */
+#bookingForm button {
+    margin-bottom: 2.5px;
+}
+
+#currentBookings {
+    margin-top: 2.5px;
+}
+
+
+
+
 
 /* Employee Management Styles */
-.employee-info {
-    margin-top: 20px; /* Add margin above the table */
-    
-}
+
 
 .employee-info table {
     width: 100%; /* Ensure the table takes up the full width */
     border-collapse: collapse; /* Collapse borders */
     margin-top: 40px; /* Add margin above the table */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .employee-info th, .employee-info td {
     border: 1px solid #ccc; /* Add border to table cells */
     padding: 10px; /* Add padding for better spacing */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .employee-info th {
     background-color: #1B4D3E; /* Optional: Add background color to table header */
     color: #fff; /* Optional: Add text color to table header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 /* Schedule Styles */
@@ -195,6 +234,8 @@ body {
     width: 100%;
 }
 
+    
+
 .date-area {
     display: flex;
     background: linear-gradient(to right, #e7e7e7 45%, #000 45%, #000 45%, #e7e7e7 50%);
@@ -205,6 +246,11 @@ body {
     flex-basis: 80px;
     align-items: center;
 }
+.weather-container-full-width,
+.dashboard-row > div {
+    width: 100%;
+}
+
 
 .date-area>span {
     font-size: 8px;
@@ -229,36 +275,27 @@ body {
 }
 
 /* Demand Forecast Styles */
-.main-content {
-    padding: 20px;
-}
+
 
 .chart-container {
-    display: none; /* Initially hidden */
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Chart Styles */
-#demandChart {
-    background-color: #f5f5f5; /* Light gray background for chart */
-    border-radius: 10px;
+    margin: 20px auto; /* Add margin to center the container */
+    width: 80%; /* Set width of the container */
+    max-width: 600px; /* Set maximum width */
+    background-color: #f9f9f9; /* Background color for booking and revenue sections */
+    padding: 20px; /* Add padding to each section */
+    border-radius: 10px; /* Set border radius */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+ 
 }
 
-/* Chart Title */
-.chart-title {
-    text-align: center;
-    font-size: 24px;
-    color: #1B4D3E; /* Green color for chart title */
-    margin-bottom: 20px;
-}
+
 
 
 /* Input box styling */
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="number"],
 textarea,
 select {
     padding: 10px; /* Add padding to the input */
@@ -275,6 +312,7 @@ select {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
+input[type="number"]:focus, 
 textarea:focus,
 select:focus {
     border-color: #007bff; /* Change border color when input is focused */
@@ -288,14 +326,14 @@ button {
     border-radius: 5px; /* Add rounded corners */
     font-size: 16px; /* Adjust font size */
     cursor: pointer; /* Change cursor to pointer on hover */
-    background-color: #055618d9; /* Set background color */
+    background-color: #1B4D3E; /* Set background color */
     color: #fff; /* Set text color */
     transition: background-color 0.3s ease; /* Add smooth transition for background color */
 }
 
 /* Style for when button is hovered */
 button:hover {
-    background-color: #0a4629; /* Change background color on hover */
+    background-color: #0e5432; /* Change background color on hover */
 }
 
 
