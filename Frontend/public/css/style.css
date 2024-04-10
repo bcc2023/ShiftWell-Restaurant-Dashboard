@@ -209,70 +209,41 @@ body {
     height: 100%;
 }
 
-.timeline-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    column-count: 7;
-    column-gap: 10px;
-}
-
-.container {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-wrap: wrap;
+.day1
+.day2
+.day3
+.day4
+.day5
+.day6
+.day7 {
     max-width: 800px;
-    margin: 5px auto;
+    margin: 0 auto;
 }
-
-.first-box,
-.second-box,
-.last-box {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+  
+.timetable {
     width: 100%;
+    border-collapse: collapse;
 }
-
-    
-
-.date-area {
-    display: flex;
-    background: linear-gradient(to right, #e7e7e7 45%, #000 45%, #000 45%, #e7e7e7 50%);
-    order: 2;
-    text-align: center;
-    color: #fff;
-    font-size: 5px;
-    flex-basis: 80px;
-    align-items: center;
-}
-.weather-container-full-width,
-.dashboard-row > div {
-    width: 100%;
-}
-
-
-.date-area>span {
-    font-size: 8px;
-    line-height: 40px;
-    margin: 5px;
-    background: #0c4d0e; /* Green shape color */
-    width: 40px;
-    border-radius: 50%;
-}
-
-.content {
-    text-align: center;
+  
+.timetable th, .timetable td {
     padding: 10px;
-    border-radius: 10px;
-    font-size: 10px;
-    color: black;
-    order: 3;
-    width: 50%;
-    padding-left: 10px;
-    background: #fff;
-    margin: 10px;
+    text-align: center;
+    border: 1px solid #d6d0d0;
 }
+  
+.timetable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+  
+.timetable tbody th{
+    text-align: center;
+}
+  
+.timetable tbody td.occupied{
+    background-color: #617c63;
+}
+
 
 /* Demand Forecast Styles */
 
