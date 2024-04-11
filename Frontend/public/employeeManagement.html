@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/backendData/employees">
     <title>Employee Information</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,13 +13,12 @@
             <img src="/images/logo.png" alt="GoodOldDays Logo">
         </div>
         <ul class="menu">
-            <li>
+            <li class="active">
                 <a href="/backendData">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-
             <!-- Other menu items -->
             <li id="schedule">
                 <a href="/backendData/schedule">
@@ -34,14 +32,14 @@
                     <span>Demand Forecast</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a href="/backendData/employeeManagement">
                     <i class="fas fa-users-cog"></i>
                     <span>Employee Management</span>
                 </a>
             </li>
             <li class="logout">
-                <a href="#">
+                <a href="/logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -53,11 +51,30 @@
             <h1>Employee Information</h1>
             <form id="addEmployeeForm">
                 <label for="employeeId">Employee ID:</label>
-                <input type="text" id="employeeId" name="employeeId">
+                <input type="text" id="employeeId" name="employeeId" required>
+
                 <label for="employeeName">Name:</label>
-                <input type="text" id="employeeName" name="employeeName">
-                <label for="employeeStatus">Shift ID:</label>
-                <input type="text" id="employeeStatus" name="employeeStatus">
+                <input type="text" id="employeeName" name="employeeName" required>
+
+                <label for="employeeAge">Age:</label>
+                <input type="number" id="employeeAge" name="employeeAge" required>
+
+                <label for="employmentStatus">Employment Status:</label>
+                <select id="employmentStatus" name="employmentStatus" required>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Contract">Contract</option>
+                </select>
+
+                <label for="hourlySalary">Hourly Salary:</label>
+                <input type="text" id="hourlySalary" name="hourlySalary" required>
+
+                <label for="isChef">Is Chef:</label>
+                <select id="isChef" name="isChef" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
                 <button type="submit">Add Employee</button>
             </form>
             <table id="employeeTable">
@@ -65,7 +82,10 @@
                     <tr>
                         <th>Employee ID</th>
                         <th>Name</th>
-                        <th>Shift ID</th>
+                        <th>Age</th>
+                        <th>Employment Status</th>
+                        <th>Hourly Salary</th>
+                        <th>Is Chef</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,7 +96,78 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        // Import the functions you need from your module
+       /*  import { fetchEmployees, populateEmployeeTable, handleFormSubmit, showSuccessMessage } from '../components/update_employee.js'; */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('addEmployeeForm').addEventListener('submit', handleFormSubmit);
+            fetchEmployees(); // Fetch existing employees when the page loads
+        });
+
+        const fetchEmployees = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/employee');
+                if (!response.ok) throw new Error('Failed to fetch employees');
+
+                const employees = await response.json();
+                populateEmployeeTable(employees);
+            } catch (error) {
+                console.error('Error fetching employees:', error);
+            }
+        };
+
+        const populateEmployeeTable = (employees) => {
+            const tableBody = document.getElementById('employeeTable').querySelector('tbody');
+            tableBody.innerHTML = ''; // Clear existing rows before adding new ones
+
+            employees.forEach(employee => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${employee.id}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.age}</td>
+                    <td>${employee.employment_status}</td>
+                    <td>${employee.hourly_salary}</td>
+                    <td>${employee.is_chef ? 'Yes' : 'No'}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
+
+        const handleFormSubmit = async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const newEmployee = Object.fromEntries(formData.entries());
+            newEmployee.is_chef = !!+newEmployee.isChef; // Convert "1"/"0" string to boolean and ensure the property name matches the Flask route expectation
+            delete newEmployee.isChef; // Remove the isChef field to avoid confusion
+
+            const payload = {
+                name: newEmployee.name,
+                employment_status: newEmployee.employmentStatus,
+                age: parseInt(newEmployee.age, 10), // Ensure age is an integer
+                is_chef: newEmployee.is_chef,
+                hourly_salary: newEmployee.hourlySalary
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/employee', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error('Failed to add employee');
+
+                document.getElementById('addEmployeeForm').reset();
+                showSuccessMessage();
+                fetchEmployees(); // Fetch and display updated employee data
+            } catch (error) {
+                console.error('Error adding employee:', error);
+            }
+        };
+
         const showSuccessMessage = () => {
             const modal = document.createElement('div');
             modal.classList.add('modal');
@@ -111,78 +202,6 @@
                 document.body.removeChild(modal);
             }, 1000);
         };
-        // Function to update data on backend
-        const updateDataOnBackend = async (data) => {
-            try {
-                const response = await fetch('http://localhost:4000/updateData', {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                return response.json();
-            } catch (error) {
-                console.error('Error updating data on backend:', error);
-                throw error;
-            }
-        };
-
-        // Fetch data from backend and populate the table
-        fetch('http://localhost:5000/employee')
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.querySelector('#employeeTable tbody');
-
-            // Iterate over each employee and create table rows
-            data.forEach(employee => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${employee.id}</td>
-                    <td>${employee.name}</td>
-                    <td>${employee.employment_status}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-        });
-
-        // Handle form submission to add employee
-        document.getElementById('addEmployeeForm').addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent form submission
-            
-            const employeeId = document.getElementById('employeeId').value;
-            const employeeName = document.getElementById('employeeName').value;
-            const employeeStatus = document.getElementById('employeeStatus').value;
-
-            // Create a new employee object
-            const newEmployee = {
-                id: employeeId,
-                name: employeeName,
-                shiftId: employeeStatus
-            };
-
-            showSuccessMessage();
-
-            try {
-                // Call function to update data on backend
-                const response = await updateDataOnBackend(newEmployee);
-                console.log(response); // Log the response from the backend
-                // If successful, add the new employee to the table
-                const tableBody = document.querySelector('#employeeTable tbody');
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${newEmployee.id}</td>
-                    <td>${newEmployee.name}</td>
-                    <td>${newEmployee.shiftId}</td>
-                `;
-                tableBody.appendChild(row);
-                // Clear the form fields
-                document.getElementById('addEmployeeForm').reset();
-            } catch (error) {
-                console.error('Error adding employee:', error);
-            }
-        });
     </script>
-    <script src="../components/update_employee.js"></script>
 </body>
 </html>
