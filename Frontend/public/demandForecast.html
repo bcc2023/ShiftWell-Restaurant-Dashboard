@@ -59,9 +59,27 @@
 
 
     <script>
-    const xValues = Array.from({ length: 13 }, (_, i) => `${i + 10}:00`);
+    async function fetchDataFromServer() {
+        try {
+            // Fetch data from backend server
+            const response = await fetch('/api/data');
+            const data = await response.json();
 
-    const yValues = [7,33,43,59,69,39,10,19,14,60,64,65,34,12];
+            // Extract x and y values from the fetched data
+            const xValues = data.map(entry => entry.x);
+            const yValues = data.map(entry => entry.y);
+
+            return { xValues, yValues };
+        } catch (error) {
+            console.error('Error fetching data from server:', error);
+            // If there's an error, return default data
+            return {
+                xValues: Array.from({ length: 13 }, (_, i) => `${i + 10}:00`),
+                yValues: [7, 33, 43, 59, 69, 39, 10, 19, 14, 60, 64, 65, 34, 12]
+            };
+        }
+    }
+
     
     new Chart("demandChart", {
         type: "line",
