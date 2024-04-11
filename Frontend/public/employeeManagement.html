@@ -56,8 +56,8 @@
                 <input type="text" id="employeeId" name="employeeId">
                 <label for="employeeName">Name:</label>
                 <input type="text" id="employeeName" name="employeeName">
-                <label for="employeeShift">Shift ID:</label>
-                <input type="text" id="employeeShift" name="employeeShift">
+                <label for="employeeStatus">Shift ID:</label>
+                <input type="text" id="employeeStatus" name="employeeStatus">
                 <button type="submit">Add Employee</button>
             </form>
             <table id="employeeTable">
@@ -129,7 +129,7 @@
         };
 
         // Fetch data from backend and populate the table
-        fetch('http://localhost:4000/getData')
+        fetch('http://localhost:5000/employee')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.querySelector('#employeeTable tbody');
@@ -140,7 +140,7 @@
                 row.innerHTML = `
                     <td>${employee.id}</td>
                     <td>${employee.name}</td>
-                    <td>${employee.shiftId}</td>
+                    <td>${employee.employment_status}</td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -152,13 +152,13 @@
             
             const employeeId = document.getElementById('employeeId').value;
             const employeeName = document.getElementById('employeeName').value;
-            const employeeShift = document.getElementById('employeeShift').value;
+            const employeeStatus = document.getElementById('employeeStatus').value;
 
             // Create a new employee object
             const newEmployee = {
                 id: employeeId,
                 name: employeeName,
-                shiftId: employeeShift
+                shiftId: employeeStatus
             };
 
             showSuccessMessage();
