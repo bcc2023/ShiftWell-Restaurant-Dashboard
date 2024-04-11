@@ -98,7 +98,7 @@
 
     <script type="module">
         // Import the functions you need from your module
-       /*  import { fetchEmployees, populateEmployeeTable, handleFormSubmit, showSuccessMessage } from '../components/update_employee.js'; */
+        /* import { fetchEmployees, populateEmployeeTable, handleFormSubmit, showSuccessMessage } from '../components/update_employee.js'; */
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('addEmployeeForm').addEventListener('submit', handleFormSubmit);
@@ -144,15 +144,15 @@
             delete newEmployee.isChef; // Remove the isChef field to avoid confusion
 
             const payload = {
-                name: newEmployee.name,
+                name: newEmployee.employeeName,
                 employment_status: newEmployee.employmentStatus,
-                age: parseInt(newEmployee.age, 10), // Ensure age is an integer
+                age: parseInt(newEmployee.employeeAge, 10), // Ensure age is an integer
                 is_chef: newEmployee.is_chef,
                 hourly_salary: newEmployee.hourlySalary
             };
 
             try {
-                const response = await fetch('http://localhost:5000/employee', {
+                const response = await fetch ('http://localhost:5000/employee', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
