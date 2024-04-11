@@ -34,13 +34,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/backendData/employeeManagement">
                     <i class="fas fa-users-cog"></i>
                     <span>Employee Management</span>
                 </a>
             </li>
             <li class="logout">
-                <a href="#">
+                <a href="/logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -50,6 +50,8 @@
 
     <div class="main-content">
         <h1>Recommended Schedule</h1>
+        <br>
+        <h3>Choose Your Objective :</h3>
         <div class="schedule-container">
             <button class="tablink" onclick="openPage('Reduce Cost', this)">Reduce Cost</button>
             <button class="tablink" onclick="openPage('Good Service', this)">Good Service</button>
@@ -536,38 +538,45 @@
             }
             document.getElementById(pageName).style.display='block';
         }
-
         fetch('http://localhost:4000/getDataSchedule')
         .then(response => response.json())
         .then(data => {
             const tabcontent = document.querySelector('.tabcontent');
+            const dayContainers = tabcontent.querySelectorAll('.day1, .day2, .day3, .day4, .day5, .day6, .day7')
 
-            data.forEach(employee => {
-                const dayNumber = employee.id;
-                const dayContainer = tabcontent.querySelector(`.day${dayNumber} .timetable tbody`);
-
-
-                const shiftId = employee.shiftId.toLowerCase();
-                const employeeName = employee.name;
-
-                const employeeRow = dayContainer.querySelector(`tr`);
-                const employeeHeader = employeeRow.querySelector('th');
-                employeeHeader.textContent = employeeName;
-
-                const timeCells = employeeRow.querySelectorAll('td');
-
-                timeCells.forEach((cell, index) => {
-                    if (shiftId === 'morning' && index === 0) {
-                        cell.classList.add('occupied');
-                    } else if (shiftId === 'afternoon' && index === 1) {
-                        cell.classList.add('occupied');
-                    } else if (shiftId === 'night' && index === 2) {
-                        cell.classList.add('occupied');
+            dayContainers.forEach((dayContainer, dayIndex) =>{
+                const timetable = dayContainers.querySelector('.timetable tbody');
+                
+                data.forEach((employee) =>{
+                    if (employee.id ==dayIndex +1){
+                        const row = document.createElement('tr');
+                        const nameCell = document.createElement('th');
+                        nameCell.textContent = employee.name;
+                        row.appendChild(nameCell);
+                        
+                        const shiftId = employee.shiftId.toLowerCase();
+                        const timeCells = [
+                            document.createElement('td'),
+                            document.createElement('td'),
+                            document.createElement('td')
+                        ];
+                        timeCells.forEach((cell, index)=>{
+                            if (shiftId === 'morning' && index === 0){
+                                cell.classList.add('occupied');
+                            }else if (shiftId === 'afternoon' && index === 1){
+                                cell.classList.add('occupied');
+                            }else if (shiftId === 'night' && index === 2){
+                                cell.classList.add('occupied');
+                            }
+                            row.appendChild(cell);
+                        });
+                        timetable.appendChild(row);
                     }
                 });
             });
-        })
-
+            
+        });
     </script>
+
 </body>
 </html>
