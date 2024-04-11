@@ -1,0 +1,8 @@
+Flask==2.2.5
+Flask_Cors==4.0.0
+Flask_RESTful==0.3.10
+numpy==1.26.4
+ortools==9.9.3963
+pandas==2.2.1
+requests
+mysql.connector
