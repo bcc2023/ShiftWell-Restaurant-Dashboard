@@ -59,10 +59,11 @@
 
 
     <script>
-    async function fetchDataFromServer() {
+    async function fetchDemand() {
         try {
-            // Fetch data from backend server
             const response = await fetch('/api/data');
+            if (!response.ok) throw new Error('Failed to fetch demand data');
+
             const data = await response.json();
 
             // Extract x and y values from the fetched data
@@ -71,7 +72,7 @@
 
             return { xValues, yValues };
         } catch (error) {
-            console.error('Error fetching data from server:', error);
+            console.error('Error fetching demand data:', error);
             // If there's an error, return default data
             return {
                 xValues: Array.from({ length: 13 }, (_, i) => `${i + 10}:00`),
@@ -80,7 +81,65 @@
         }
     }
 
-    
+    // Call the fetchDemand function
+
+    async function fetchDataAndCreateChart() {
+        try {
+            const { xValues, yValues } = await fetchDemand();
+
+            // Use xValues and yValues to create the chart
+            new Chart("demandChart", {
+                type: "line",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor: "rgba(0,0,255,1.0)",
+                        borderColor: "rgba(255, 105, 180, 1.0)", // Change line color to pink
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    scales: {
+                        yAxes: [{
+                            ticks: {min: 0, max: 90},
+                            scaleLabel: { // Add y-axis label
+                                display: true,
+                                labelString: 'Population',
+                                fontColor: '#333', // Label font color
+                                fontStyle: 'bold', // Label font style
+                                fontSize: 14 // Label font size
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: { // Add x-axis label
+                                display: true,
+                                labelString: 'Hours',
+                                fontColor: '#333', // Label font color
+                                fontStyle: 'bold', // Label font style
+                                fontSize: 14 // Label font size
+                            }
+                        }]
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching data and creating chart:', error);
+        }
+    }
+
+    // Call the asynchronous function to start the process
+    fetchDataAndCreateChart();
+
+
+/* 
+    const xValues = Array.from({ length: 13 }, (_, i) => `${i + 10}:00`);
+
+    const yValues = [7,33,43,59,69,39,10,19,14,60,64,65,34,12]; 
+
+
     new Chart("demandChart", {
         type: "line",
         data: {
@@ -117,7 +176,7 @@
             }]
             }
         }
-        });
+        });*/
 
     </script>
     
