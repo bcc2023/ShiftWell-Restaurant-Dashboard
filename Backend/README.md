@@ -21,9 +21,10 @@
 
 ---
 
-Run with Docker
+Run with Docker 🐳
 
-`cd ..` to go do project root directory, then `docker-compose up --build`
+- `cd ..` to go to project root directory
+- then `docker-compose up --build`
 
 Access the REST API at `localhost:5000`
 
