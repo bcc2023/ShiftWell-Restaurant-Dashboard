@@ -541,40 +541,55 @@
         fetch('http://localhost:4000/getDataSchedule')
         .then(response => response.json())
         .then(data => {
-            const tabcontent = document.querySelector('.tabcontent');
-            const dayContainers = tabcontent.querySelectorAll('.day1, .day2, .day3, .day4, .day5, .day6, .day7')
 
-            dayContainers.forEach((dayContainer, dayIndex) =>{
-                const timetable = dayContainers.querySelector('.timetable tbody');
-                
-                data.forEach((employee) =>{
-                    if (employee.id ==dayIndex +1){
-                        const row = document.createElement('tr');
-                        const nameCell = document.createElement('th');
-                        nameCell.textContent = employee.name;
-                        row.appendChild(nameCell);
-                        
-                        const shiftId = employee.shiftId.toLowerCase();
-                        const timeCells = [
-                            document.createElement('td'),
-                            document.createElement('td'),
-                            document.createElement('td')
-                        ];
-                        timeCells.forEach((cell, index)=>{
-                            if (shiftId === 'morning' && index === 0){
-                                cell.classList.add('occupied');
-                            }else if (shiftId === 'afternoon' && index === 1){
-                                cell.classList.add('occupied');
-                            }else if (shiftId === 'night' && index === 2){
-                                cell.classList.add('occupied');
-                            }
-                            row.appendChild(cell);
-                        });
-                        timetable.appendChild(row);
+            data.forEach((employee) => {
+                const dayNumber = employee.id;
+                const dayContainer = document.querySelector(`.day${dayNumber} .timetable tbody`);
+
+                let allRowsOccupied = true;
+                dayContainer.querySelectorAll('tr').forEach(row => {
+                    if (!row.dataset.occupied) {
+                        allRowsOccupied = false;
                     }
                 });
+
+                if (allRowsOccupied) {
+                    const newRow = document.createElement('tr');
+                    const newHeader = document.createElement('th');
+                    newHeader.textContent = employee.name;
+                    newRow.appendChild(newHeader);
+
+                    for (let i = 0; i < 3; i++) {
+                        const newTd = document.createElement('td');
+                        if ((employee.shiftId.toLowerCase() === 'morning' && i === 0) ||
+                            (employee.shiftId.toLowerCase() === 'afternoon' && i === 1) ||
+                            (employee.shiftId.toLowerCase() === 'night' && i === 2)) {
+                            newTd.classList.add('occupied');
+                        }
+                        newRow.appendChild(newTd);
+                    }
+
+                    dayContainer.appendChild(newRow);
+                } else {
+                    const employeeRow = dayContainer.querySelector('tr:not([data-occupied="true"])');
+                    employeeRow.dataset.occupied = true;
+                    const employeeHeader = employeeRow.querySelector('th');
+                    if (employeeHeader) {
+                        employeeHeader.textContent = employee.name;
+                    }
+
+                    const timeCells = employeeRow.querySelectorAll('td');
+                    const shiftId = employee.shiftId.toLowerCase();
+
+                    timeCells.forEach((cell, cellIndex) => {
+                        if ((shiftId === 'morning' && cellIndex === 0) ||
+                            (shiftId === 'afternoon' && cellIndex === 1) ||
+                            (shiftId === 'night' && cellIndex === 2)) {
+                            cell.classList.add('occupied');
+                        }
+                    });
+                }
             });
-            
         });
     </script>
 
