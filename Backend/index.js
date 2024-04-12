@@ -38,7 +38,8 @@ app.get("/getDataSchedule", (req, res) => {
         { id: 1, name: "Issac", shiftId: "Afternoon" },
         { id: 1, name: "Daniel", shiftId: "Afternoon" },
         { id: 3, name: "Ben", shiftId: "Night" },
-        { id: 2, name: "Ben", shiftId: "Night"}
+        { id: 2, name: "Ben", shiftId: "Night" },
+        {id: 7, name: "John", shiftId: "Night"}
     ];
     res.json(scheduleData);
 });
