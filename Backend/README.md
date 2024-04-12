@@ -1,10 +1,6 @@
 # goodolddays-shiftwell-system
 
-### Overview
-
-This project aims to enhance the manpower management efficiency of the GoodOldDays restaurant through manpower scheduling optimization using advanced statistical methods
-
-### Project Organization
+### Backend Organization
 
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
@@ -25,9 +21,10 @@ This project aims to enhance the manpower management efficiency of the GoodOldDa
 
 ---
 
-Run with Docker
+Run with Docker 🐳
 
-`docker-compose up --build`
+- `cd ..` to go to project root directory
+- then `docker-compose up --build`
 
 Access the REST API at `localhost:5000`
 

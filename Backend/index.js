@@ -29,11 +29,17 @@ app.get("/getData", (req, res) => {
 app.get("/getDataSchedule", (req, res) => {
     // Assuming you have some schedule data
     const scheduleData = [
-        { id: 1, name: "John", shiftId: "Morning" },
+        { id: 1, name: "Jo", shiftId: "Morning" },
         { id: 2, name: "Jane", shiftId: "Afternoon" },
         { id: 3, name: "Doe", shiftId: "Night" },
         { id: 4, name: "Alice", shiftId: "Morning" },
-        { id: 5, name: "Bob", shiftId: "Afternoon" }
+        { id: 5, name: "Bob", shiftId: "Afternoon" },
+        { id: 1, name: "Brandon", shiftId: "Morning" },
+        { id: 1, name: "Issac", shiftId: "Afternoon" },
+        { id: 1, name: "Daniel", shiftId: "Afternoon" },
+        { id: 3, name: "Ben", shiftId: "Night" },
+        { id: 2, name: "Ben", shiftId: "Night" },
+        {id: 7, name: "John", shiftId: "Night"}
     ];
     res.json(scheduleData);
 });

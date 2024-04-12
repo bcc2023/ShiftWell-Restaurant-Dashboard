@@ -191,7 +191,6 @@ body {
     background-color: #09450b; /* Change button background color to green */
     color: white;
     float: left;
-    border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -207,7 +206,6 @@ body {
 .tabcontent {
     display: none;
     padding: 20px;
-    border: 1px solid #ccc;
     border-top: none;
 }
 
