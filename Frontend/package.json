@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:frontend": "node index.js",
-    "start": "npm run start:frontend"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Xue Beichen",
   "license": "ISC",

@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 
 const PORT = 8000;
-const BACKEND_PORT = 4000; 
+/* const BACKEND_PORT = 4000;  */
 const app = express();
 
 // Import component logic
