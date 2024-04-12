@@ -48,70 +48,56 @@ app.get('/weather', async (req, res) => {
 }); */
 
 
-app.get('/backendData', async (req, res) => {
+app.get('/dashboard', (req, res) => {
     try {
-        // Fetch backend data from the backend server
-        const backendData = await fetchDataFromBackend();
-        
-        // Serve the HTML file containing the chart with the fetched backend data
-        res.sendFile(path.join(__dirname, 'public', 'employeeChart.html'), { backendData });
+        res.sendFile(path.join(__dirname, 'public', 'Dashboard.html'));
     } catch (error) {
-        console.error('Error fetching data from backend:', error);
+        console.error('Error serving Dashboard:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-}); 
+});
 
-app.get('/backendData/employees', async (req, res) => {
+app.get('/dashboard/employees', async (req, res) => {
     try {
-        // Fetch backend data from the backend server
-        const backendData = await fetchDataFromBackend();
-        res.sendFile(path.join(__dirname, 'public', 'employee.html'), { backendData });
-
-
+        res.sendFile(path.join(__dirname, 'public', 'employee.html'));
     } catch (error) {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-app.get('/backendData/schedule', async (req, res) => {
+app.get('/dashboard/schedule', async (req, res) => {
     try {
-        // Fetch backend data from the backend server
-        const backendDataSchedule = await fetchDataFromBackendSchedule();
-        
-        // Serve the HTML file containing the chart with the fetched backend data
-        res.sendFile(path.join(__dirname, 'public', 'schedule.html'), { backendDataSchedule });
+        /* // Fetch backend data from the backend server
+        const backendDataSchedule = await fetchDataFromBackendSchedule(); */
+        res.sendFile(path.join(__dirname, 'public', 'schedule.html'));
     } catch (error) {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-app.get('/backendData/demandForecast', async (req, res) => {
+app.get('/dashboard/demandForecast', async (req, res) => {
     try {
         // Fetch demand forecast data from the backend server
-        const demandForecastData = await fetchDataFromBackendDemandForecast();
+        /* const demandForecastData = await fetchDataFromBackendDemandForecast(); */
         
         // Serve the HTML file containing the demand forecast data
-        res.sendFile(path.join(__dirname, 'public', 'demandForecast.html'),{demandForecastData});
+        res.sendFile(path.join(__dirname, 'public', 'demandForecast.html'));
     } catch (error) {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-app.get('/backendData/dashboard', (req, res) => {
+/* app.get('/backendData/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
-});
+}); */
 
 
-app.get('/backendData/employeeManagement', async (req, res) => {
+app.get('/dashboard/employeeManagement', async (req, res) => {
     try {
-        // Fetch backend data from the backend server
-        const backendData = await fetchDataFromBackend();
-        res.sendFile(path.join(__dirname, 'public', 'employeeManagement.html'), { backendData });
-
-
+        res.sendFile(path.join(__dirname, 'public', 'employeeManagement.html'));
     } catch (error) {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
