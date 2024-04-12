@@ -7,3 +7,9 @@ This project aims to enhance the manpower management efficiency of the GoodOldDa
 ```
 docker-compose up --build
 ```
+
+Then access the website at
+
+```
+localhost:8000/dashboard
+```
