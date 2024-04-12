@@ -24,11 +24,37 @@ def home():
     return 'Welcome to API for Shift-well System!'
 
 @app.route('/getPredictedDemand', methods=['GET'])
-def get__demand_without_data():
+def get__demand_home():
         return "Please input data for demand prediction."
 
 @app.route('/getPredictedDemand', methods=['POST'])
 def get_predicted_demand():
+        try:
+            data = request.get_json()
+            predict = prediction.predict_shift_default(data)
+            predictOutput = predict
+            return {'predict':predictOutput.to_json(orient="split")}
+
+        except Exception as error:
+            return {'error': error}
+       
+@app.route('/getPredictedSchedule', methods=['GET'])
+def get_schedule_homoe():
+        return "Welcome to schedule prediction api."
+        
+@app.route('/getPredictedSchedule/default', methods=['GET','POST'])
+def get_predicted_schedule_default():
+        try:
+            data = request.get_json()
+            predict = prediction.predict_shift_default(data)
+            predictOutput = predict
+            return {'predict':predictOutput.to_json(orient="split")}
+
+        except Exception as error:
+            return {'error': error}
+        
+@app.route('/getPredictedSchedule/economic', methods=['GET','POST'])
+def get_predicted_schedule_economic():
         try:
             data = request.get_json()
             predict = prediction.predict_shift_economic(data)
@@ -37,16 +63,12 @@ def get_predicted_demand():
 
         except Exception as error:
             return {'error': error}
-       
-@app.route('/getPredictedSchedule', methods=['GET'])
-def get_without_data():
-        return "Please input visitor demand for schedule prediction."
         
-@app.route('/getPredictedSchedule', methods=['POST'])
-def get_predicted_schedule():
+@app.route('/getPredictedSchedule/quality', methods=['GET','POST'])
+def get_predicted_schedule_quality():
         try:
             data = request.get_json()
-            predict = prediction.predict_shift_economic(data)
+            predict = prediction.predict_shift_quality(data)
             predictOutput = predict
             return {'predict':predictOutput.to_json(orient="split")}
 

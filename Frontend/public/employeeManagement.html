@@ -50,8 +50,8 @@
         <div class="employee-info">
             <h1>Employee Information</h1>
             <form id="addEmployeeForm">
-                <label for="employeeId">Employee ID:</label>
-                <input type="text" id="employeeId" name="employeeId" required>
+                <!-- <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" required> -->
 
                 <label for="employeeName">Name:</label>
                 <input type="text" id="employeeName" name="employeeName" required>
@@ -98,7 +98,7 @@
 
     <script type="module">
         // Import the functions you need from your module
-       /*  import { fetchEmployees, populateEmployeeTable, handleFormSubmit, showSuccessMessage } from '../components/update_employee.js'; */
+        /* import { fetchEmployees, populateEmployeeTable, handleFormSubmit, showSuccessMessage } from '../components/update_employee.js'; */
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('addEmployeeForm').addEventListener('submit', handleFormSubmit);
@@ -143,16 +143,22 @@
             newEmployee.is_chef = !!+newEmployee.isChef; // Convert "1"/"0" string to boolean and ensure the property name matches the Flask route expectation
             delete newEmployee.isChef; // Remove the isChef field to avoid confusion
 
+            const age = parseInt(newEmployee.employeeAge, 10);
+                if (age < 17 || age > 100) {
+                    alert('Illegal to work! Please enter a valid age between 17 and 100.');
+                    return;
+                }
+
             const payload = {
-                name: newEmployee.name,
+                name: newEmployee.employeeName,
                 employment_status: newEmployee.employmentStatus,
-                age: parseInt(newEmployee.age, 10), // Ensure age is an integer
+                age: age, // Ensure age is an integer
                 is_chef: newEmployee.is_chef,
                 hourly_salary: newEmployee.hourlySalary
             };
 
             try {
-                const response = await fetch('http://localhost:5000/employee', {
+                const response = await fetch ('http://localhost:5000/employee', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
