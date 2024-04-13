@@ -22,9 +22,9 @@ def schedule_employees(df):
     df_employee['hourly_salary'] = df_employee['hourly_salary'].astype('float')
     
     all_days = df['day_of_week'].unique()
+    all_shifts = df['shift'].unique()
    
     df['demand'] = df['demand']
-    all_shifts = ['Morning' ,'Afternoon', 'Evening']
     
     all_employee = df_employee['name'].tolist()
     fulltimers = df_employee[df_employee['employment_status'] == 'Full Time']['name'].tolist()
