@@ -111,7 +111,7 @@ body {
 /* employeeChart style */
 .dashboard-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: column;
     align-items: flex-start;
     flex-wrap: wrap;
 }
@@ -155,6 +155,25 @@ body {
 }
 
 
+#past-week-customers-container {
+    margin-top: 10px; /* Space above the container */
+    padding: 20px; /* Padding inside the container */
+    background-color: #f9f9f9; /* Consistent background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow like other containers */
+    max-width: calc(100% - 40px); /* Full width minus padding */
+    margin-left: left; /* Centering if needed */
+    margin-right: auto; /* Centering if needed */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Since #past-week-customers-container is a type of chart container, it should follow similar rules */
+@media (min-width: 768px) {
+    .dashboard-row > #past-week-customers-container {
+        width: calc(50% - 10px); /* Half the width of its parent by default, like other containers */
+        margin-bottom: 20px; /* Consistent spacing below the container */
+    }
+}
 
 
 
