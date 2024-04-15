@@ -766,12 +766,175 @@
     </div>
     <script>
 
-        const input = [{"visit_date": "2023-01-01","shift": "Afternoon", 
-        "visitors_count_by_shift": 18,"demand": 3,"day_of_week": 7,"flg_is_ph": 0},
-        {"visit_date": "2023-01-01", "shift": "Evening","visitors_count_by_shift": 244,
-        "demand": 5, "day_of_week": 7,"flg_is_ph": 0},
-        {"visit_date": "2023-01-01", "shift": "Morning", "visitors_count_by_shift": 145,
-        "demand": 3,"day_of_week": 7, "flg_is_ph": 0}];
+        const input = [
+  {
+    "visit_date": "2023-01-01",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 18,
+    "demand": 3,
+    "day_of_week": 7,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-01",
+    "shift": "Evening",
+    "visitors_count_by_shift": 244,
+    "demand": 5,
+    "day_of_week": 7,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-01",
+    "shift": "Morning",
+    "visitors_count_by_shift": 145,
+    "demand": 3,
+    "day_of_week": 7,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-02",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 13,
+    "demand": 3,
+    "day_of_week": 1,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-02",
+    "shift": "Evening",
+    "visitors_count_by_shift": 164,
+    "demand": 4,
+    "day_of_week": 1,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-02",
+    "shift": "Morning",
+    "visitors_count_by_shift": 97,
+    "demand": 3,
+    "day_of_week": 1,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-03",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 8,
+    "demand": 3,
+    "day_of_week": 2,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-03",
+    "shift": "Evening",
+    "visitors_count_by_shift": 94,
+    "demand": 3,
+    "day_of_week": 2,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-03",
+    "shift": "Morning",
+    "visitors_count_by_shift": 56,
+    "demand": 3,
+    "day_of_week": 2,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-04",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 5,
+    "demand": 3,
+    "day_of_week": 3,
+    "flg_is_ph": 1
+  },
+  {
+    "visit_date": "2023-01-04",
+    "shift": "Evening",
+    "visitors_count_by_shift": 70,
+    "demand": 3,
+    "day_of_week": 3,
+    "flg_is_ph": 1
+  },
+  {
+    "visit_date": "2023-01-04",
+    "shift": "Morning",
+    "visitors_count_by_shift": 42,
+    "demand": 3,
+    "day_of_week": 3,
+    "flg_is_ph": 1
+  },
+  {
+    "visit_date": "2023-01-05",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 5,
+    "demand": 3,
+    "day_of_week": 4,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-05",
+    "shift": "Evening",
+    "visitors_count_by_shift": 65,
+    "demand": 3,
+    "day_of_week": 4,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-05",
+    "shift": "Morning",
+    "visitors_count_by_shift": 39,
+    "demand": 3,
+    "day_of_week": 4,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-06",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 6,
+    "demand": 3,
+    "day_of_week": 5,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-06",
+    "shift": "Evening",
+    "visitors_count_by_shift": 84,
+    "demand": 3,
+    "day_of_week": 5,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-06",
+    "shift": "Morning",
+    "visitors_count_by_shift": 49,
+    "demand": 3,
+    "day_of_week": 5,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-07",
+    "shift": "Afternoon",
+    "visitors_count_by_shift": 16,
+    "demand": 3,
+    "day_of_week": 6,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-07",
+    "shift": "Evening",
+    "visitors_count_by_shift": 204,
+    "demand": 5,
+    "day_of_week": 6,
+    "flg_is_ph": 0
+  },
+  {
+    "visit_date": "2023-01-07",
+    "shift": "Morning",
+    "visitors_count_by_shift": 122,
+    "demand": 3,
+    "day_of_week": 6,
+    "flg_is_ph": 0
+  }];
 
         function openPage(pageName, endpoint, element){
             var i, tabcontent;
