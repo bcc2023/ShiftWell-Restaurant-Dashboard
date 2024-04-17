@@ -57,14 +57,14 @@ app.get('/dashboard', (req, res) => {
     }
 });
 
-app.get('/dashboard/employees', async (req, res) => {
+/* app.get('/dashboard/employees', async (req, res) => {
     try {
         res.sendFile(path.join(__dirname, 'public', 'employee.html'));
     } catch (error) {
         console.error('Error fetching data from backend:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
-});
+}); */
 
 app.get('/dashboard/schedule', async (req, res) => {
     try {
