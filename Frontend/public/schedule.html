@@ -765,7 +765,6 @@
         </div>
     </div>
     <script>
-
         const input = [
   {
     "visit_date": "2023-01-01",
@@ -934,9 +933,11 @@
     "demand": 3,
     "day_of_week": 6,
     "flg_is_ph": 0
-  }];
+  }]; 
 
-        function openPage(pageName, endpoint, element){
+
+
+        function openPage(pageName, endpoint){
             var i, tabcontent;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -949,17 +950,17 @@
             )
             .then(response => response.json())
             .then(data => {
-                populateTimetable(data);
+                populateTimetable(data, pageName);
             })
         }
 
-        function populateTimetable(data){
+        function populateTimetable(data, pageName){
             const predictData = JSON.parse(data.predict);
             predictData.data.forEach((employee) => {
                 const dayNumber = employee[0];
                 const shift = employee[1];
                 const staff = employee[2];
-                const dayContainer = document.querySelector(`.day${dayNumber} .timetable tbody`);
+                const dayContainer = document.querySelector(`#${pageName.replace(/\s/g, '\\ ')} .day${dayNumber} .timetable tbody`);
 
                 let existingRow = Array.from(dayContainer.querySelectorAll('tr')).find(row => row.querySelector('th').textContent === staff);
 
