@@ -144,17 +144,24 @@
             delete newEmployee.isChef; // Remove the isChef field to avoid confusion
 
             const age = parseInt(newEmployee.employeeAge, 10);
-                if (age < 17 || age > 100) {
-                    alert('Illegal to work! Please enter a valid age between 17 and 100.');
-                    return;
-                }
+            if (age < 17 || age > 100) {
+                alert('Illegal to work! Please enter a valid age between 17 and 100.');
+                return;
+            }
+
+            // Check for negative hourly salary
+            const hourlySalary = parseFloat(newEmployee.hourlySalary);
+            if (hourlySalary < 0) {
+                alert('Hourly salary cannot be negative. Please enter a valid non-negative value.');
+                return;
+            }
 
             const payload = {
                 name: newEmployee.employeeName,
                 employment_status: newEmployee.employmentStatus,
                 age: age, // Ensure age is an integer
                 is_chef: newEmployee.is_chef,
-                hourly_salary: newEmployee.hourlySalary
+                hourly_salary: hourlySalary // Ensure hourly_salary is a non-negative number
             };
 
             try {
@@ -172,7 +179,8 @@
             } catch (error) {
                 console.error('Error adding employee:', error);
             }
-        };
+};
+
 
         const showSuccessMessage = () => {
             const modal = document.createElement('div');
