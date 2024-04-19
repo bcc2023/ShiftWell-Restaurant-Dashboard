@@ -61,7 +61,7 @@
     <script>
     async function fetchDemand() {
         try {
-            const response = await fetch('/api/data');
+            const response = await fetch('localhost:5000/getPredictedSchedule/default');
             if (!response.ok) throw new Error('Failed to fetch demand data');
 
             const data = await response.json();
