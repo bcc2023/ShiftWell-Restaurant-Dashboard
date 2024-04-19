@@ -2,6 +2,7 @@ from ortools.sat.python import cp_model
 import numpy as np
 import pandas as pd
 import requests
+import schedule_generator_default as sg_default
 def schedule_employees(df):
     ##### variables ------------------------------------####
     url = 'http://127.0.0.1:5000/employee'
@@ -128,8 +129,7 @@ def schedule_employees(df):
         # Convert the list of dictionaries to a pandas DataFrame
         schedule_df = pd.DataFrame(schedule_data)
     else:
-        print("No solution found.")
-        schedule_df = pd.DataFrame()  # Empty DataFrame if no solution 
+        schedule_df = sg_default.schedule_employees(df)
     
     return schedule_df
 
