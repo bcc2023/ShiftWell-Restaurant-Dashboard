@@ -9,11 +9,6 @@ const PORT = 8000;
 const app = express();
 
 // Import component logic
-const scrapeWeatherData = require('./components/scrapeWeatherData');
-const fetchDataFromBackend = require('./components/backendDataFetcher');
-const fetchDataFromBackendSchedule = require('./components/backendDataFetcher');
-const fetchDataFromBackendDemandForecast = require('./components/backendDataFetcher');
-
 
 app.use(cors());
 
@@ -34,19 +29,6 @@ app.get('/weather', async (req, res) => {
     }
 });
 
-/* app.get('/backendData', async (req, res) => {
-    try {
-        // Fetch backend data from the backend server
-        const backendData = await fetchDataFromBackend();
-        
-        // Serve the HTML file containing the chart with the fetched backend data
-        res.sendFile(path.join(__dirname, 'public', 'dashboard.html'), { backendData });
-    } catch (error) {
-        console.error('Error fetching data from backend:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-}); */
-
 
 app.get('/dashboard', (req, res) => {
     try {
@@ -57,14 +39,6 @@ app.get('/dashboard', (req, res) => {
     }
 });
 
-/* app.get('/dashboard/employees', async (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, 'public', 'employee.html'));
-    } catch (error) {
-        console.error('Error fetching data from backend:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-}); */
 
 app.get('/dashboard/schedule', async (req, res) => {
     try {
@@ -79,10 +53,6 @@ app.get('/dashboard/schedule', async (req, res) => {
 
 app.get('/dashboard/demandForecast', async (req, res) => {
     try {
-        // Fetch demand forecast data from the backend server
-        /* const demandForecastData = await fetchDataFromBackendDemandForecast(); */
-        
-        // Serve the HTML file containing the demand forecast data
         res.sendFile(path.join(__dirname, 'public', 'demandForecast.html'));
     } catch (error) {
         console.error('Error fetching data from backend:', error);
@@ -90,9 +60,6 @@ app.get('/dashboard/demandForecast', async (req, res) => {
     }
 });
 
-/* app.get('/backendData/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
-}); */
 
 
 app.get('/dashboard/employeeManagement', async (req, res) => {
