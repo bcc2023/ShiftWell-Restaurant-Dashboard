@@ -35,7 +35,7 @@ The GoodOldDays ShiftWell System project aims to achieve the following objective
 
 ### Planning and Organization
 
-** Milestones and Timeline**:
+**Milestones and Timeline**:
 
 Requirement gathering (week 8): 
 Both Backend and Frontend: Define objectives and research on the relevant technical expertise for frontend and backend.
