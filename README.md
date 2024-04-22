@@ -5,7 +5,7 @@ This project aims to enhance the manpower management efficiency of the GoodOldDa
 ### Run with Docker 🐳
 
 ```
-docker-compose up --build
+docker-compose up
 ```
 
 Then access the website at
