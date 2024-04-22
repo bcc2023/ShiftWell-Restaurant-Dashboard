@@ -1,32 +1,66 @@
-## GoodOldDays ShiftWell System Wiki
+
+## Wiki for GoodOldDays ShiftWell System
 
 ### Project Understanding
-
-**Comprehensive Overview**:
+**Overview**:
 The GoodOldDays ShiftWell System is designed to tackle the significant challenge of manpower optimization in the hospitality and F&B sectors. This initiative arises from the need to address fluctuating customer demands, peak service hours, and high employee turnover rates, which are prevalent issues in these industries. The project aims to deploy advanced data-driven solutions to enhance the quality of service while minimizing operational costs through effective workforce management.
+**Scope and Requirements**:
 
-**Objective Alignment**:
-The primary goal is to develop an integrated system that not only forecasts demand accurately but also automates staff scheduling to meet this demand optimally. This system integrates real-time data analysis, including weather forecasting and current bookings, to adapt to changing conditions dynamically. This approach ensures that businesses can maintain high service standards even during unexpected demand surges or potential staff shortages.
+The GoodOldDays ShiftWell System project aims to achieve the following objectives:
 
-**Innovation and Impact**:
-By leveraging cutting-edge technologies and methodologies, such as predictive analytics and machine learning, the project aspires to transform traditional scheduling and workforce management practices. The expected outcome includes significant improvements in cost management, staff satisfaction, and overall operational efficiency. The project also places a strong emphasis on compliance with labor laws and industry standards, ensuring that the solutions are sustainable and ethically grounded.
+#### Front-end:
+1. **Dashboard Interface:** Design and develop an intuitive and responsive dashboard interface with clear navigation for easy access to essential functionalities.
+   
+2. **Customization Options:** Provide users with options to choose from minimization objectives in producing recommended schedules. Provide users with the employee database to easily manage employee information.
+   
+3. **Interactive Visualizations:** Implement interactive charts and graphs to present scheduling, forecasting, and dashboard in a user-friendly and engaging manner.
+   
+4. **User Experience Enhancements:** Focus on visual clarity and organization to enhance usability and engagement, ensuring a seamless and enjoyable experience for users.
+
+#### Back-end:
+1. **Visitor Forecasting:** Develop models and algorithms to accurately predict visitor demand based on historical data and trends, facilitating informed decision-making for staff scheduling and resource allocation.
+   
+2. **Automated Scheduling:** Build functionality to automate staff scheduling processes based on predicted demand and compliance rules, optimizing workforce management and operational efficiency.
+   
+3. **Workload Balancing:** Implement algorithms to balance workload and effectively manage staff schedules, ensuring equitable distribution of tasks and resources.
+
+4. **Database Management:** Implement MySql database for robust employee information management to facilitate scheduling recommendation. 
+
+#### Connecting Frontend and Backend:
+- **Frontend and Backend APIs and Services:** Develop scalable Flask APIs with RESTful Design to support seamless data retrieval, manipulation, and storage, ensuring robust and efficient communication between frontend and backend components.
+
+
+
+
 
 ### Planning and Organization
 
-**Strategic Framework**:
-The planning phase of the GoodOldDays ShiftWell System was meticulously structured to ensure a clear path from conceptualization to implementation. This phase involved defining detailed milestones, setting realistic deadlines, and allocating resources efficiently to cover all aspects of the system's development—from frontend user interfaces to backend data processing.
+** Milestones and Timeline**:
 
-**Task Allocation and Milestones**:
-Tasks were distributed among teams based on expertise, ensuring that data scientists worked on predictive model development while software developers focused on API integration and frontend functionalities. Key milestones included the completion of the demand forecasting model, development of the automated scheduling system, and the launch of the interactive dashboard.
+Requirement gathering (week 8): 
+Both Backend and Frontend: Define objectives and research on the relevant technical expertise for frontend and backend.
 
-**Risk Management and Quality Assurance**:
-Comprehensive risk assessments were conducted to identify potential challenges in data privacy, technical complexities, and integration hurdles. Contingency plans were established to address these risks promptly. Regular quality assurance tests and feedback loops were integral to the planning stage, ensuring that each component of the project met the high standards set by the stakeholders.
+Planning and data prep (week 9): 
+Backend: Finalise the architecture for the system. Data preparation and preprocessing.
+Frontend:  Finalise the webpage design and intended effect on interaction 
 
-**Collaborative Efforts**:
-The project was marked by a collaborative approach, involving continuous interactions between technical teams, business strategists, and end-users such as restaurant managers and staff. This collaboration helped tailor the system to real-world needs and preferences, ensuring that the final product was not only technologically advanced but also user-friendly and practical.
+Model and dashboard development (week 10-11): 
+Backend: Create the prediction model. Create the database. 
+Frontend: Build real-time API and webpage html.
+
+Integration and Testing (week 12): 
+Both Backend and Frontend: Integration of the frontend and backend. Deploy system. Conduct final testing and bug fixing. 
+
+**Task Allocation**
+Frontend: 
+Cao Han works on api building and employee 
+Beichen works on css and Demand Forecast page
+Boyu works on Dashboard page
+Jiamin works on Recommended Schedule page
+Backend: 
+
 
 ### Research and Analysis
-
 **Extensive Data Analysis**:
 The team employed rigorous data analysis methodologies to understand and predict customer behavior and demand. By examining historical sales data, weather patterns, and event schedules, the project developed a nuanced understanding of factors impacting customer volume. This comprehensive research allowed for the creation of accurate demand forecasting models that are pivotal for effective staff scheduling.
 
@@ -35,37 +69,31 @@ Advanced predictive analytics tools were utilized to process and analyze large d
 
 **Collaborative Research Approach**:
 Collaboration with industry experts and stakeholders ensured that all research activities were aligned with real operational needs and challenges. Regular feedback sessions helped refine the data models and analytics, ensuring their relevance and accuracy in a dynamic business environment.
+Possible references:
+https://www.predicthq.com/events/lstm-time-series-forecasting
+https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-its.2016.0208
+
 
 ### Creativity and Innovation
-
 **Innovative Scheduling Solutions**:
-The project introduced a novel automated scheduling system that leverages real-time data to optimize staff deployment. This system not only schedules based on forecasted demand but also incorporates employee preferences and compliance requirements, showcasing a balance between operational efficiency and workplace satisfaction.
+Our project employs two distinct strategies to schedule employees, tailored to the specific needs of the restaurant. The first strategy, Reduce Cost, and the second, Good Service, each generate unique staff schedules based on the restaurant’s requirements. These modes are trained with different constraints to yield diverse scheduling outcomes.
+As for our Dashboard, we’ve incorporated a booking system designed to accommodate walk-in customers without reservations. This feature enhances the ease of restaurant operations for the manager. Additionally, we’ve integrated a weather widget that enables the manager to forecast visitor numbers based on weather conditions. For instance, rainy weather might deter people from visiting Sentosa, resulting in fewer customers. Armed with this information, the manager can strategically decide to let some part-time staff leave early if necessary. This proactive approach ensures optimal staffing levels that align with customer demand.
 
-**Interactive Dashboard Design**:
-Creativity was paramount in the design of the Command Center dashboard, which features intuitive navigation and interactive elements. Managers can now access a holistic view of operations, including advanced visualizations of revenue trends, customer volumes, and staff allocations. The dashboard is designed to facilitate quick decisions, making it a powerful tool for daily operations.
+Responsive Design Principles: Implementing responsive design principles ensures that web applications adapt seamlessly to different screen sizes and devices. By using flexible layouts, fluid grids, and media queries, developers can create a consistent user experience across various devices.
 
 **Adaptive Features**:
 The project team demonstrated innovation by integrating adaptive features such as weather-based scheduling adjustments and real-time booking management. These features allow the system to dynamically respond to sudden changes, ensuring that the business can maintain high service levels under varying conditions.
 
-**Use of Emerging Technologies**:
-Exploration and integration of emerging technologies such as machine learning algorithms for predictive analytics and real-time data synchronization showcase the project's forward-thinking approach. These technologies not only enhance the system's capabilities but also ensure it remains cutting-edge.
-
 ### Technical Skills
+The project team managed complex data with high efficiency, utilizing advanced data processing tools and MySQL databases to power both data analysis and the real-time, predictive capabilities of the dashboard. The data management framework was optimized for handling large datasets, crucial for the accuracy of the predictive models.
+The software development process was structured around agile methodologies, which facilitated rapid iterations and responsiveness to changing project needs. Front-end development was accomplished using HTML, CSS, and JavaScript, ensuring a robust and responsive user interface. The backend was developed using Node.js, which provided an event-driven architecture ideal for non-blocking asynchronous behaviors, enhancing the system’s scalability and throughput.
+System integration was a key focus, with RESTful APIs designed using Node.js and Express framework ensuring seamless communication between the predictive analytics engine, the dynamic scheduling system, and the interactive dashboard. This integration was critical for maintaining efficient operations across different components of the system.
+For machine learning capabilities, Python’s skopt (scikit-optimize) library, a Sequential model-based optimization package, was utilized to implement algorithms that enhanced the precision of demand forecasts. This setup ensured that the system was always aligned with the latest data insights, maintaining optimal performance and decision-making accuracy.
 
-**Advanced Data Handling**:
-The project team demonstrated exceptional technical skills in handling complex data structures and large datasets. Utilizing advanced data processing frameworks and databases, such as MySQL, the system effectively manages and analyzes data to drive the predictive models and real-time insights crucial for the dashboard.
 
-**Software Development Proficiency**:
-Developers employed modern software engineering practices, including agile methodologies, to ensure rapid and flexible response to project requirements. The use of robust front-end technologies such as JavaScript and backend frameworks ensured that the application was not only functional but also scalable and secure.
 
-**Integration of Technologies**:
-Integration played a key role in the project, with seamless connections established between the predictive analytics engine, the dynamic scheduling system, and the interactive dashboard. APIs were designed to be robust and efficient, facilitating real-time data flow across different components of the system.
-
-**Use of Predictive and Real-Time Technologies**:
-The technical team showcased their skill in implementing machine learning algorithms to refine the accuracy of demand forecasts and scheduling recommendations. Real-time data synchronization technologies were utilized to ensure that the system continuously adapts to operational conditions and updates.
 
 ### Quality of Implementation
-
 **Adherence to Best Practices**:
 The implementation of the ShiftWell System adhered to industry best practices in software development, data security, and user interface design. Rigorous code reviews, consistent coding standards, and comprehensive testing protocols ensured high-quality outputs and reliable system performance.
 
@@ -80,11 +108,8 @@ Throughout the project, feedback from end-users and stakeholders was continuousl
 
 ### Problem Solving
 
-**Dynamic Response to Challenges**:
-Throughout the project, the team demonstrated exceptional problem-solving skills by addressing and resolving multiple complex challenges. The ability to dynamically adapt the staff scheduling system based on real-time weather updates and unforeseen booking changes showcases the team's proactive approach to operational unpredictability.
-
 **Innovative Solutions for Staffing Fluctuations**:
-The team developed innovative algorithms to manage sudden fluctuations in customer volume and staff availability. By integrating these algorithms into the scheduling system, the project ensures that staffing levels are always optimized for both expected and unexpected scenarios, maintaining service quality without incurring unnecessary labor costs.
+The team leverages the employee database to manage sudden fluctuations in customer volume and staff availability. By integrating the database into the scheduling system, the project ensures that staffing levels are always optimized for both expected and unexpected scenarios, maintaining service quality without incurring unnecessary labor costs.
 
 **Overcoming Technical Constraints**:
 The team faced significant technical constraints, including limitations in data accuracy and availability. Through creative data augmentation techniques and the application of robust error-handling mechanisms, these issues were effectively mitigated, ensuring the reliability of the system’s outputs.
@@ -92,16 +117,21 @@ The team faced significant technical constraints, including limitations in data 
 **Interdisciplinary Approach to Problem-Solving**:
 The project benefitted from an interdisciplinary approach, combining insights from data science, software engineering, and operational management to devise holistic solutions. This collaborative effort was crucial in overcoming some of the most challenging aspects of the project, such as integrating real-time data feeds into the predictive models.
 
-### Documentation
+### Documentation of some important design decisions
+Taking weather into consideration:
+The consideration of real time weather conditions is reflected in both the frontend and backend ,as we believe it is an integral part of information in decision making of restaurant management. In Frontend, the project team decided to incorporate a weather widget into the dashboard, despite no explicit requirement for such a feature in the initial project specifications. Understanding the significant impact of weather on visitor attendance, particularly in Sentosa, the widget was designed to provide real-time weather forecasts. This enables the restaurant manager to make informed decisions regarding staffing and operational adjustments based on anticipated weather conditions. In Backend, The backend team developed a custom weather data scraper. This scraper autonomously gathers weather data from selected meteorological services and input the information into their model for more accurate results.  By integrating these features, the system not only meets the current needs but also prepares the platform for future scalability and functionality enhancements.
 
-**Comprehensive System Documentation**:
+Proactive Design Approach:
+Despite the absence of a specific requirement from the manager for an employee information database, the development team chose to implement a comprehensive employee management database. This decision was made to future-proof the system and extend its functionality, allowing for more robust operations such as detailed employee tracking, role management, and future scalability options. This proactive approach not only enhances the system's capabilities but also provides a foundation for potential feature expansions.
+
+Comprehensive System Documentation:
 The project's documentation is thorough and meticulously detailed. It covers every aspect of the system, from setup and configuration to user operation and maintenance. This documentation ensures that all users, regardless of their technical proficiency, can effectively interact with the system.
 
 **Code Documentation and Standards**:
 The source code is well-documented with comments and explanations that clarify the purpose and functionality of code blocks. Adherence to coding standards and best practices enhances the readability and maintainability of the code, facilitating easier updates and modifications.
 
 **User Manuals and Training Materials**:
-Detailed user manuals and training materials are provided, offering step-by-step guides on how to utilize the system’s features effectively. These materials are designed to help users quickly become proficient in navigating the dashboard and utilizing its various tools for decision-making.
+Detailed instructions to run code is available on GitHub, offering step-by-step guides on how to utilize the system’s features effectively. These materials are designed to help users quickly become proficient in navigating the dashboard and utilizing its various tools for decision-making. The data file and the entry point to input data file are clearly presented in the code directory and code file, enabling easy training with new data for future maintenance of the model.
 
 **Technical Specifications and API Documentation**:
 Technical specifications and API documentation are thoroughly written, providing developers and system integrators with the information needed to understand system interfaces and interactions. This documentation is crucial for ensuring successful integration with external systems and for future expansions of the system’s capabilities.
@@ -109,50 +139,26 @@ Technical specifications and API documentation are thoroughly written, providing
 ### Testing and Evaluation
 
 #### Comprehensive Testing Framework
-
 The GoodOldDays ShiftWell System was subjected to a rigorous testing framework to ensure its reliability and effectiveness. This included several phases:
 
-- **Unit Testing:** Each module, from predictive analytics to booking management, was tested to ensure individual functionality.
 - **Integration Testing:** Ensured that system modules operated cohesively.
 - **System Testing:** Tested the complete system in an environment that simulated real-world conditions.
-- **Stress Testing:** Ensured the system could handle peak loads.
 - **User Acceptance Testing (UAT):** Involved end users to validate the system against business requirements.
 
 #### Evaluation of Outcomes
-
 The system's performance was evaluated based on key indicators:
 
 - **Accuracy of Predictive Models:** Match between system predictions and actual customer volumes.
 - **User Interface Usability:** Feedback from users regarding the dashboard usability.
 - **System Reliability and Responsiveness:** Performance under various operational scenarios.
-- **Compliance Adherence:** Ensuring the scheduling met all regulatory standards.
+
 
 ### Presentation and Communication
 
 #### Effective Information Dissemination
+- **Detailed Demonstrations:** Showcased system functionalities successfully.
+- **Strategic Meetings:** Held frequent meetings among members to align project goals.
 
-Efforts to communicate the system's capabilities:
 
-- **Detailed Demonstrations:** Showcased system functionalities regularly.
-- **Strategic Meetings:** Held frequent meetings with stakeholders to align project goals.
 
-#### Training and Support
 
-Ensured smooth adoption through:
-
-- **Training Sessions:** Conducted comprehensive sessions for end-users.
-- **Support Materials:** Created FAQs, troubleshooting guides, and quick reference cards.
-
-#### Public Relations and Marketing
-
-Extended communication to marketing and public relations:
-
-- **Marketing Collaterals:** Developed brochures and online content highlighting system features.
-- **Public Presentations:** Presented the project at industry conferences to reach a broader audience.
-
-#### Feedback Mechanisms
-
-Implemented mechanisms to capture user feedback:
-
-- **Surveys and Feedback Forms:** Regularly distributed to gather user feedback.
-- **Open Communication Channels:** Established for users to report issues or suggest improvements.
