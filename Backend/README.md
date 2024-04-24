@@ -1,31 +1,22 @@
 # goodolddays-shiftwell-system
+    
+- 📁 Backend
+  - 📁 app               (flask application files)
+    - 📄 Dockerfile      (Dockefile for building the Flask application image)
+  - 📁 db                (files for initializing database and tables)
+  - 📁 models            (Trained and serialized models, model predictions, or model summaries
+  - 📄 README.md         (The README for developers using the backend application)
+  - 📄 index.js          (Backend entry point)
 
-### Backend Organization
-
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── app         <- flask application files
-    │
-    │
-    │── notebooks   <- python notebooks for EDA and model building
-    │
-    ├── db          <- files for initialize database and tables
-    │
-    └── docker-compose.yml  <-configure application's services
-
----
-
-Run with Docker 🐳
+### Run with Docker 🐳
 
 - `cd ..` to go to project root directory
-- then `docker-compose up --build`
+- then `docker-compose up`
+### Access the REST API at 
 
-Access the REST API at `localhost:5000`
+`localhost:5000`
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a></p>
+### Notes
+Directories including **notebooks**(python notebooks for EDA and model building), **models**(Trained and serialized models, model predictions, or model summaries), and **data**(external, synthesized, and preprocessed data) are not included in this repo as they are not useful during the application development stage. Instead of saving copies of the large files here, we have moved the essential models inside the **app** directory here for building the application. 
+
+For more reference of the directories not included, please visit [https://github.com/DSA3101AY2324S2-ByteForce/goodolddays-shiftwell-system-backend](https://github.com/DSA3101AY2324S2-ByteForce/goodolddays-shiftwell-system-backend). Note that you need to have access to it as it is a private repository.
