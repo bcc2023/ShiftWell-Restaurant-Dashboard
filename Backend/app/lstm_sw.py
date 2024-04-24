@@ -91,7 +91,7 @@ def generate_holiday_df(year):
 def feature_engineering():
     visitor_data = pd.read_csv("synthetic_visit_data.csv")
     visitor_data['visit_date'] = pd.to_datetime(visitor_data['visit_date'])
-    weather_data = pd.read_csv("processed/weather_data_cleaned.csv")
+    weather_data = pd.read_csv("weather_data_cleaned.csv")
     weather_data['Date'] = pd.to_datetime(weather_data['Date'])
     columns_to_drop = weather_data.columns[0:3].tolist()  # Dropping columns by indices
     weather_data.drop(columns=columns_to_drop, inplace=True)
