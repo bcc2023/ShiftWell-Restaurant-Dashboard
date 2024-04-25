@@ -51,17 +51,24 @@
 
     <div class="main-content">
         <h1>Customer Demand Forecast</h1>
-        <div class="chart-container">
-            <canvas id="demandChart"  style="width:100%;max-width:600px"></canvas>
+        <div class="tabs">
+            <button class="tablink" onclick="openPage('Daily', this, 'red')">Daily</button>
+            <button class="tablink" onclick="openPage('Hourly', this, 'green')">Hourly</button>
+        </div>
+        <div id="Daily" class="tabcontent">
+            <canvas id="dailyDemandChart" style="width:100%;max-width:600px"></canvas>
+        </div>
+        <div id="Hourly" class="tabcontent">
+            <canvas id="hourlyDemandChart" style="width:100%;max-width:600px"></canvas>
         </div>
     </div>
 
 
 
     <script>
-    async function fetchDemand() {
+    async function fetchDemand(endpoint) {
         try {
-            const response = await fetch('localhost:5000/getPredictedSchedule/default');
+            const response = await fetch(endpoint);
             if (!response.ok) throw new Error('Failed to fetch demand data');
 
             const data = await response.json();
