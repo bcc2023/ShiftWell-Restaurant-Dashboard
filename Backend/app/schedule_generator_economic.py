@@ -134,7 +134,7 @@ def schedule_employees():
         schedule_df = pd.DataFrame(schedule_data)
     else:
         df['demand'] = df['demand'] - 1
-        schedule_df = sg_default.schedule_employees(df)
+        schedule_df = sg_default.schedule_employees()
     
     return schedule_df
 

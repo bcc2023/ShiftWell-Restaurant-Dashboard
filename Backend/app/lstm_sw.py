@@ -240,26 +240,21 @@ def generate_hourly_data(prediction_7days):
 
 
 def predicted_demand_data_processing(hourly_output):
-    import datetime
     df = hourly_output.copy()
     shift_mapper = {"8:00" :"Morning", "9:00" :"Morning", "10:00" :"Morning", "11:00" :"Morning", "12:00" :"Morning",
               "13:00" :"Morning", "14:00" :"Afternoon", "15:00" :"Afternoon", "17:00" :"Afternoon", "18:00" :"Afternoon", 
               "19:00" :"Evening", "20:00" :"Evening", "21:00" :"Evening", "22:00" :"Evening", "23:00" :"Evening"}
 
     df['shift'] = df['time'].map(shift_mapper)
-    df['date'] = pd.to_datetime(df['date'])
-    year = df['date'].dt.year.unique()[0]
-    holidays_sg = [
-        datetime.date(year, 1, 1), datetime.date(year, 2, 10), datetime.date(year, 2, 11),
-        datetime.date(year, 3, 29), datetime.date(year, 4, 10), datetime.date(year, 5, 1),
-        datetime.date(year, 5, 20), datetime.date(year, 6, 17), datetime.date(year, 8, 9),
-        datetime.date(year, 10, 31), datetime.date(year, 12, 25)
-    ]
-    df['flg_is_ph'] = np.where(df['date'].isin(holidays_sg), 1, 0)
-
     grouped_df = df.groupby(['date', 'shift'])['estimated_arrival_count'].sum().reset_index()
-    grouped_df['day_of_week'] = grouped_df['date'].dt.weekday()
-    return grouped_df
-    
-    
+    grouped_df['demand'] = grouped_df['estimated_arrival_count'].apply(lambda x: 3 if  x < 100 else max(3, x//50+1))
+    year = datetime.now().year 
+    ph = generate_holiday_df(year)
+    grouped_df['date'] = grouped_df['date'].astype(str)
+    ## rename calendar_date to date
+    ph.rename(columns = {'calendar_date':'date'}, inplace = True)
+    ph.rename(columns={'holiday_flg_sg':'flg_is_ph'}, inplace=True)
+    ph['date'] = ph['date'].astype(str)
+    final_df = pd.merge(ph, grouped_df, how='inner')
+    return final_df
     

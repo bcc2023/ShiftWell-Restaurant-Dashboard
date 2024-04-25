@@ -135,7 +135,7 @@ def schedule_employees():
         # Convert the list of dictionaries to a pandas DataFrame
         schedule_df = pd.DataFrame(schedule_data)
     else:
-        schedule_df = sg_default.schedule_employees(df)
+        schedule_df = sg_default.schedule_employees()
     
     return schedule_df
 
