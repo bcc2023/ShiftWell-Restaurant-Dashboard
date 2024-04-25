@@ -9,15 +9,15 @@ from scipy.stats import skewnorm
 from sklearn.preprocessing import MinMaxScaler
 
 # Load the LSTM model
-with open('model_architecture.json', 'r') as json_file: # architecture
+with open('goodolddays-shiftwell-system-backend/app/model_architecture.json', 'r') as json_file: # architecture
     loaded_model_json = json_file.read()
 model = model_from_json(loaded_model_json)
-model.load_weights('model_weights.weights.h5') # weights
-with open('scaler.pkl', 'rb') as scaler_file:
+model.load_weights('goodolddays-shiftwell-system-backend/app/model_weights.weights.h5') # weights
+with open('goodolddays-shiftwell-system-backend/app/scaler.pkl', 'rb') as scaler_file:
     loaded_scaler = pickle.load(scaler_file) # scaler
 
 def weather_data_processing():
-    data = json.load(open('next_7_day.json'))
+    data = json.load(open('goodolddays-shiftwell-system-backend/app/next_7_day.json'))
     df = pd.DataFrame(data)
     df = df.iloc[0:7]
     df['heavy_rainfall_flg'] = np.where(df['weatherCondition'].str.contains('shower|storm',case=False), 1, 0)
@@ -89,13 +89,13 @@ def generate_holiday_df(year):
     return holiday_sg_24
 
 def feature_engineering():
-    visitor_data = pd.read_csv("synthetic_visit_data.csv")
+    visitor_data = pd.read_csv("goodolddays-shiftwell-system-backend/app/synthetic_visit_data.csv")
     visitor_data['visit_date'] = pd.to_datetime(visitor_data['visit_date'])
-    weather_data = pd.read_csv("weather_data_cleaned.csv")
+    weather_data = pd.read_csv("goodolddays-shiftwell-system-backend/app/weather_data_cleaned.csv")
     weather_data['Date'] = pd.to_datetime(weather_data['Date'])
     columns_to_drop = weather_data.columns[0:3].tolist()  # Dropping columns by indices
     weather_data.drop(columns=columns_to_drop, inplace=True)
-    holiday_data = pd.read_csv("date_info_2324.csv")
+    holiday_data = pd.read_csv("goodolddays-shiftwell-system-backend/app/date_info_2324.csv")
     holiday_data['calendar_date'] = pd.to_datetime(holiday_data['calendar_date'])
     holiday_data.rename(columns={'calendar_date': 'calender_date'}, inplace=True)
     holiday_data.drop(columns="day_of_week", inplace=True)
@@ -240,10 +240,14 @@ def generate_hourly_data(prediction_7days):
 
 
 def predicted_demand_data_processing(hourly_output):
+    import datetime
     df = hourly_output.copy()
     shift_mapper = {"8:00" :"Morning", "9:00" :"Morning", "10:00" :"Morning", "11:00" :"Morning", "12:00" :"Morning",
               "13:00" :"Morning", "14:00" :"Afternoon", "15:00" :"Afternoon", "17:00" :"Afternoon", "18:00" :"Afternoon", 
               "19:00" :"Evening", "20:00" :"Evening", "21:00" :"Evening", "22:00" :"Evening", "23:00" :"Evening"}
+
+    df['shift'] = df['time'].map(shift_mapper)
+    df['date'] = pd.to_datetime(df['date'])
     year = df['date'].dt.year.unique()[0]
     holidays_sg = [
         datetime.date(year, 1, 1), datetime.date(year, 2, 10), datetime.date(year, 2, 11),
@@ -251,12 +255,11 @@ def predicted_demand_data_processing(hourly_output):
         datetime.date(year, 5, 20), datetime.date(year, 6, 17), datetime.date(year, 8, 9),
         datetime.date(year, 10, 31), datetime.date(year, 12, 25)
     ]
-    df['shift'] = df['time'].map(shift_mapper)
-    df['day'] = pd.to_datetime(df['date'])
-    df['flg_is_ph'] = np.where(df['day'].isin(holidays_sg), 1, 0)
+    df['flg_is_ph'] = np.where(df['date'].isin(holidays_sg), 1, 0)
 
-    grouped_df = df.groupby(['day', 'shift'])['visitors_count_by_shift'].sum().reset_index()
-    grouped_df['day_of_week'] = grouped_df['day'].dt.isoweekday()
+    grouped_df = df.groupby(['date', 'shift'])['estimated_arrival_count'].sum().reset_index()
+    grouped_df['day_of_week'] = grouped_df['date'].dt.weekday()
     return grouped_df
+    
     
     
