@@ -71,6 +71,9 @@ app.get('/dashboard/employeeManagement', async (req, res) => {
     }
 });
 
+app.get('/logout', async (req, res) => {
+    res.json('You have been logged out');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
