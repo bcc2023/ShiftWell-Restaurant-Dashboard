@@ -9,15 +9,15 @@ from scipy.stats import skewnorm
 from sklearn.preprocessing import MinMaxScaler
 
 # Load the LSTM model
-with open('goodolddays-shiftwell-system-backend/app/model_architecture.json', 'r') as json_file: # architecture
+with open('model_architecture.json', 'r') as json_file: # architecture
     loaded_model_json = json_file.read()
 model = model_from_json(loaded_model_json)
-model.load_weights('goodolddays-shiftwell-system-backend/app/model_weights.weights.h5') # weights
-with open('goodolddays-shiftwell-system-backend/app/scaler.pkl', 'rb') as scaler_file:
+model.load_weights('model_weights.weights.h5') # weights
+with open('scaler.pkl', 'rb') as scaler_file:
     loaded_scaler = pickle.load(scaler_file) # scaler
 
 def weather_data_processing():
-    data = json.load(open('goodolddays-shiftwell-system-backend/app/next_7_day.json'))
+    data = json.load(open('next_7_day.json'))
     df = pd.DataFrame(data)
     df = df.iloc[0:7]
     df['heavy_rainfall_flg'] = np.where(df['weatherCondition'].str.contains('shower|storm',case=False), 1, 0)
@@ -89,13 +89,13 @@ def generate_holiday_df(year):
     return holiday_sg_24
 
 def feature_engineering():
-    visitor_data = pd.read_csv("goodolddays-shiftwell-system-backend/app/synthetic_visit_data.csv")
+    visitor_data = pd.read_csv("synthetic_visit_data.csv")
     visitor_data['visit_date'] = pd.to_datetime(visitor_data['visit_date'])
-    weather_data = pd.read_csv("goodolddays-shiftwell-system-backend/app/weather_data_cleaned.csv")
+    weather_data = pd.read_csv("weather_data_cleaned.csv")
     weather_data['Date'] = pd.to_datetime(weather_data['Date'])
     columns_to_drop = weather_data.columns[0:3].tolist()  # Dropping columns by indices
     weather_data.drop(columns=columns_to_drop, inplace=True)
-    holiday_data = pd.read_csv("goodolddays-shiftwell-system-backend/app/date_info_2324.csv")
+    holiday_data = pd.read_csv("date_info_2324.csv")
     holiday_data['calendar_date'] = pd.to_datetime(holiday_data['calendar_date'])
     holiday_data.rename(columns={'calendar_date': 'calender_date'}, inplace=True)
     holiday_data.drop(columns="day_of_week", inplace=True)
