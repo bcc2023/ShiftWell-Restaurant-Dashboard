@@ -3,8 +3,9 @@ import numpy as np
 import pandas as pd
 import requests
 import schedule_generator_default as sg_default
+import lstm_sw
 
-def schedule_employees(df):
+def schedule_employees():
     ##### variables ------------------------------------####
     url = 'http://127.0.0.1:5000/employee'
     response = requests.get(url)
@@ -14,6 +15,11 @@ def schedule_employees(df):
     else:
         print(f"Failed to fetch data. HTTP Status Code: {response.status_code}")
         return None
+    
+    #### forecasted demand data -------------------------------------####
+    prediction_7days = lstm_sw.generate_daily_prediction()
+    hourly_output = lstm_sw.generate_hourly_data(prediction_7days)
+    df = lstm_sw.predicted_demand_data_processing(hourly_output)
     
     #employee (name, employment_status, age, is_chef, hourly_salary)
     df_employee = pd.DataFrame(data)
